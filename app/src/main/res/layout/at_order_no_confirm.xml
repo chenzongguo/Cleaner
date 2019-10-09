@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include layout="@layout/include_toolbar"
+        android:visibility="gone"/>
+
+
+    <ImageView
+        android:id="@+id/img_NoOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/no_order"
+        />
+
+    <ListView
+        android:id="@+id/lv_order_no_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:divider="@null"
+        android:fadingEdge="none"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:dividerHeight="10dp" />
+</LinearLayout>

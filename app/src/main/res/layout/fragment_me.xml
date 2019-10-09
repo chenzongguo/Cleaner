@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/lightgrey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_guest_query"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:drawableRight="@drawable/right_arrow"
+                android:paddingBottom="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:text="企业员工"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_12" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/lightgrey" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="30dp"
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/right_arrow"
+                android:background="@color/white"
+                android:text="员工邀请"
+                android:textSize="@dimen/text_12"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/lightgrey"
+                android:orientation="vertical" >
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_notice"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="30dp"
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/right_arrow"
+                android:background="@color/white"
+                android:text="钱包余额"
+                android:textSize="@dimen/text_12"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/lightgrey"
+                android:orientation="vertical" >
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_staff_manager"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="30dp"
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/right_arrow"
+                android:background="@color/white"
+                android:text="投诉处理"
+                android:textSize="@dimen/text_12"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/lightgrey" />
+
+
+            <TextView
+                android:id="@+id/tv_room_manager"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="30dp"
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/right_arrow"
+                android:background="@color/white"
+                android:text="评价记录"
+                android:textSize="@dimen/text_12"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/lightgrey" />
+
+            <TextView
+                android:id="@+id/fzr_jc"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:drawableRight="@drawable/right_arrow"
+                android:paddingLeft="30dp"
+                android:paddingTop="15dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="退款管理"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_12" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/lightgrey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/za_jc"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:drawableRight="@drawable/right_arrow"
+                android:paddingLeft="30dp"
+                android:paddingTop="15dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="设置"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_12" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/lightgrey" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/jf_jc"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:paddingRight="20dp"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:paddingBottom="5dp"-->
+<!--                android:paddingLeft="30dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:drawableRight="@drawable/right_arrow"-->
+<!--                android:background="@color/white"-->
+<!--                android:text="计分检查"-->
+<!--                android:textSize="@dimen/text_12"/>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/lightgrey"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

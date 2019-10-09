@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="thl_nfcreader"></dbname>
+
+    <version value="1"></version>
+
+    <list>
+        <mapping class="com.thl.cleaner.db.model.Customer"></mapping>
+        <mapping class="com.thl.cleaner.db.model.Photo"></mapping>
+        <mapping class="com.thl.cleaner.db.model.SysUser"></mapping>
+        <mapping class="com.thl.cleaner.db.model.UnlockBusiness"></mapping>
+    </list>
+</litepal>
