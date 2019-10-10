@@ -14,10 +14,12 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
+import android.util.Base64;
 import android.view.Display;
 import android.view.WindowManager;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -491,5 +493,49 @@ public class ImageUtils {
         }
 
         return inSampleSize;
+    }
+
+    public static String bufferImage(Drawable drawable) {
+        if (drawable == null) {
+            return null;
+        }
+        BitmapDrawable bd = (BitmapDrawable) drawable;
+        Bitmap bitmap = bd.getBitmap();
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+        return Base64.encodeToString(os.toByteArray(), Base64.DEFAULT);
+    }
+
+    public static String Bitmap_to_base64(Bitmap bitmap) {
+        byte[] buffer = bufferImageView(bitmap);
+        return Base64.encodeToString(buffer, Base64.DEFAULT);
+    }
+
+    public static byte[] bufferImageView(Bitmap bitmap) {
+        byte[] array = null;
+        ByteArrayOutputStream os = null;
+
+        os = new ByteArrayOutputStream();
+//		bitmap.compress(CompressFormat.JPEG, 100, os);
+
+        int options = 80;
+        bitmap.compress(Bitmap.CompressFormat.JPEG, options, os);
+        while (os.toByteArray().length / 1024 > 200) {
+            os.reset();
+            if(options>10)
+                options -= 10;
+            else
+                options -= 2;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, options, os);
+        }
+        array = os.toByteArray();
+        try {
+            os.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return array;
     }
 }

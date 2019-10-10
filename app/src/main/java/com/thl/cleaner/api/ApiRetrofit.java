@@ -16,8 +16,10 @@ import com.thl.cleaner.model.request.UpdateOrderRoomStateRequest;
 import com.thl.cleaner.model.request.UserLoginRequest;
 import com.thl.cleaner.model.request.UserRegisterRequest;
 import com.thl.cleaner.model.request.UserTokenRequest;
+import com.thl.cleaner.model.request.cleaner.CleanerDoorRequest;
 import com.thl.cleaner.model.request.cleaner.CleanerOrderListRequest;
 import com.thl.cleaner.model.request.cleaner.CleanerOrderRequest;
+import com.thl.cleaner.model.request.cleaner.FinishOrderRoomRequest;
 import com.thl.cleaner.model.response.BaseResponse;
 import com.thl.cleaner.model.response.CheckUpdateResponse;
 import com.thl.cleaner.model.response.GetOrderListResponse;
@@ -147,7 +149,7 @@ public class ApiRetrofit extends BaseApiRetrofit {
     public Observable<BaseResponse> parnterReceipt(ParnterReceiptRequest parnterReceiptRequest) {
         return mApi.parnterReceipt(getUserTokenRequestBody(parnterReceiptRequest));
     }
-    //商户接单
+    //商户派单保洁员接单
     public Observable<BaseResponse> updateOrderRoomState(UpdateOrderRoomStateRequest updateOrderRoomStateRequest) {
         return mApi.updateOrderRoomState(getUserTokenRequestBody(updateOrderRoomStateRequest));
     }
@@ -160,5 +162,15 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //
     public Observable<CleanerOrderResponse> cleanerOrder(CleanerOrderRequest cleanerOrderRequest) {
         return mApi.cleanerOrder(getUserTokenRequestBody(cleanerOrderRequest));
+    }
+
+    //
+    public Observable<BaseResponse> cleanerDoor(CleanerDoorRequest cleanerDoorRequest) {
+        return mApi.cleanerDoor(getUserTokenRequestBody(cleanerDoorRequest));
+    }
+
+    //
+    public Observable<BaseResponse> finishOrderRoom(FinishOrderRoomRequest finishOrderRoomRequest) {
+        return mApi.finishOrderRoom(getUserTokenRequestBody(finishOrderRoomRequest));
     }
 }

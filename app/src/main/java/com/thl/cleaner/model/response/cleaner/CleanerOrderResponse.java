@@ -1,6 +1,7 @@
 package com.thl.cleaner.model.response.cleaner;
 
 import com.thl.cleaner.model.Bean.OrderGoodsBean;
+import com.thl.cleaner.model.Bean.OrderServicesBean;
 
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class CleanerOrderResponse {
         private String room_area_id;
         private String room_area_name;
         private String order_room_remark;
+        private String order_room_state;
         private String door_time;
         private String is_overtime;
         private String dispatch_time;
@@ -58,8 +60,8 @@ public class CleanerOrderResponse {
         private String remark;
         private String user_remark;
         private List<OrderGoodsBean> order_goods_data;
-        private String order_services_data;
-        private String rating_data;
+        private List<OrderServicesBean> order_services_data;
+//        private String rating_data;
 
         public String getOrder_id() {
             return order_id;
@@ -237,20 +239,28 @@ public class CleanerOrderResponse {
             this.order_goods_data = order_goods_data;
         }
 
-        public String getOrder_services_data() {
+        public List<OrderServicesBean> getOrder_services_data() {
             return order_services_data;
         }
 
-        public void setOrder_services_data(String order_services_data) {
+        public void setOrder_services_data(List<OrderServicesBean> order_services_data) {
             this.order_services_data = order_services_data;
         }
 
-        public String getRating_data() {
-            return rating_data;
+//        public String getRating_data() {
+//            return rating_data;
+//        }
+//
+//        public void setRating_data(String rating_data) {
+//            this.rating_data = rating_data;
+//        }
+
+        public String getOrder_room_state() {
+            return order_room_state;
         }
 
-        public void setRating_data(String rating_data) {
-            this.rating_data = rating_data;
+        public void setOrder_room_state(String order_room_state) {
+            this.order_room_state = order_room_state;
         }
     }
 }
