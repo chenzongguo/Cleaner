@@ -1,5 +1,7 @@
 package com.thl.cleaner.ui.presenter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.widget.Toast;
 
@@ -47,5 +49,9 @@ public class OrderCompleteAtPresenter extends BasePresenter<IOrderCompleteAtView
                         Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    public void takephoto(int i){
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        mContext.startActivityForResult(intent, i);
     }
 }
