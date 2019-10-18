@@ -15,6 +15,15 @@ public class OrderManageFragment extends BaseFragment<OrderManageFgView, OrderMa
 
     @BindView(R2.id.llyOrderNoConfirm)
     LinearLayout llyOrderNoConfirm;
+
+//    @BindView(R2.id.llyOrderNoConfirm)
+//    LinearLayout llyOrderNoConfirm;
+//
+//    @BindView(R2.id.llyOrderNoConfirm)
+//    LinearLayout llyOrderNoConfirm;
+
+    @BindView(R2.id.llyComplete)
+    LinearLayout llyComplete;
     @Override
     protected OrderManageFgPresenter createPresenter() {
         return new OrderManageFgPresenter((MainActivity) getActivity());
@@ -34,6 +43,7 @@ public class OrderManageFragment extends BaseFragment<OrderManageFgView, OrderMa
     @Override
     public void initListener() {
 
-        llyOrderNoConfirm.setOnClickListener(v -> mPresenter.toActivity());
+        llyOrderNoConfirm.setOnClickListener(v -> mPresenter.toActivity("2"));
+        llyComplete.setOnClickListener(v -> mPresenter.toActivity("7"));
     }
 }

@@ -51,7 +51,7 @@ public class OrderRoomAdapter extends BaseAdapter {
             holder = new OrderRoomAdapter.ViewHolder();
             convertView = inflater.inflate(R.layout.item_order_room, null);
             holder.tv_room_name = (TextView) convertView.findViewById(R.id.tvRoomName);
-            holder.tv_room_type = (TextView) convertView.findViewById(R.id.tv_room_type);
+            holder.tv_room_type = (TextView) convertView.findViewById(R.id.tvRoomType);
             holder.tv_bed_num = (TextView) convertView.findViewById(R.id.tv_bed_num);
             holder.tv_room_area = (TextView) convertView.findViewById(R.id.tv_room_area);
 //            holder.btn_receiveOrder = convertView.findViewById(R.id.btn_receive_order);

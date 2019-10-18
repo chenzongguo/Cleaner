@@ -96,9 +96,9 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
         getView().getTvAddress().setText(cleanerOrderResponse.getData().getCorp_addr());
         getView().getTvRoomName().setText(cleanerOrderResponse.getData().getCorp_room_name());
         getView().getTvRoomType().setText(cleanerOrderResponse.getData().getRoom_type_name());
-        getView().getTvBedNum().setText(cleanerOrderResponse.getData().getBed_num());
+//        getView().getTvBedNum().setText(cleanerOrderResponse.getData().getBed_num());
         getView().getTvOrderId().setText(cleanerOrderResponse.getData().getOrder_id());
-        getView().getTvRemark().setText(cleanerOrderResponse.getData().getRemark());
+//        getView().getTvRemark().setText(cleanerOrderResponse.getData().getRemark());
         if(cleanerOrderResponse.getData().getOrder_room_state().equals("2")){
             getView().getBtnParnterReceipt().setText("确认接单");
             OrderAllocation = true;
@@ -147,8 +147,11 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
                     });
         }else if(room_state == 3){
             CleanerDoorRequest cleanerDoorRequest = new CleanerDoorRequest();
-            cleanerDoorRequest.setLat("31.97832");
-            cleanerDoorRequest.setLon("118.73433");
+//            cleanerDoorRequest.setLat("31.97832");
+//            cleanerDoorRequest.setLon("118.73433");
+
+            cleanerDoorRequest.setLat("32.055717");
+            cleanerDoorRequest.setLon("118.74584");
             cleanerDoorRequest.setUser_id("5");
             cleanerDoorRequest.setOrder_room_id(cleanerOrderResponse.getData().getOrder_room_id());
             ApiRetrofit.getInstance().cleanerDoor(cleanerDoorRequest)

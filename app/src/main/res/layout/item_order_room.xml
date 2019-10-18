@@ -38,7 +38,7 @@
             android:layout_alignParentLeft="true"
             android:text="房间类型"/>
         <TextView
-            android:id="@+id/tv_room_type"
+            android:id="@+id/tvRoomType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

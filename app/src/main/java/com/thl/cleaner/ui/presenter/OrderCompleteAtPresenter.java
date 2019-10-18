@@ -33,7 +33,17 @@ public class OrderCompleteAtPresenter extends BasePresenter<IOrderCompleteAtView
         getView().getImgPhoto1().getDrawable();
         getView().getImgPhoto1().setDrawingCacheEnabled(true);
         Bitmap bitmap=getView().getImgPhoto1().getDrawingCache();
-        finishOrderRoomRequest.setService_pic_one(ImageUtils.Bitmap_to_base64(bitmap));
+        FinishOrderRoomRequest.Pic_array pic_array = new FinishOrderRoomRequest.Pic_array();
+        pic_array.setPic_one(ImageUtils.Bitmap_to_base64(bitmap));
+        pic_array.setPic_two(ImageUtils.Bitmap_to_base64(bitmap));
+        pic_array.setPic_three(ImageUtils.Bitmap_to_base64(bitmap));
+        pic_array.setPic_four(ImageUtils.Bitmap_to_base64(bitmap));
+        pic_array.setPic_five(ImageUtils.Bitmap_to_base64(bitmap));
+        pic_array.setPic_six(ImageUtils.Bitmap_to_base64(bitmap));
+        pic_array.setPic_seven(ImageUtils.Bitmap_to_base64(bitmap));
+        pic_array.setPic_eight(ImageUtils.Bitmap_to_base64(bitmap));
+        finishOrderRoomRequest.setPic_array(pic_array);
+//        finishOrderRoomRequest.setService_pic_one(ImageUtils.Bitmap_to_base64(bitmap));
 //        finishOrderRoomRequest.setUser_id("5");
         getView().getImgPhoto1().setDrawingCacheEnabled(false);
         ApiRetrofit.getInstance().finishOrderRoom(finishOrderRoomRequest)
@@ -42,7 +52,8 @@ public class OrderCompleteAtPresenter extends BasePresenter<IOrderCompleteAtView
                 .subscribe(getBaseResponse -> {
                     String code = getBaseResponse.getCode();
                     if("000".equals(code)){
-//                            getView().getBtnParnterReceipt().setEnabled(false);
+                            getView().getBtnComplete().setEnabled(false);
+                        getView().getBtnComplete().setText("订单已完成");
                         Toast.makeText(mContext, "提交信息成功", Toast.LENGTH_SHORT).show();
                     }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();

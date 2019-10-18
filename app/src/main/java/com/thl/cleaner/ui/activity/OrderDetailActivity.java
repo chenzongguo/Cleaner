@@ -19,20 +19,20 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @BindView(R2.id.tvAddress)
     TextView tvAddress;
 
-    @BindView(R2.id.tvRoomName)
+    @BindView(R2.id.tv_room_name)
     TextView tvRoomName;
 
     @BindView(R2.id.tvRoomType)
     TextView tvRoomType;
 
-    @BindView(R2.id.tvBedNum)
-    TextView tvBedNum;
+//    @BindView(R2.id.tvBedNum)
+//    TextView tvBedNum;
 
     @BindView(R2.id.tvOrderId)
     TextView tvOrderId;
 
-    @BindView(R2.id.tvRemark)
-    TextView tvRemark;
+//    @BindView(R2.id.tvRemark)
+//    TextView tvRemark;
 //
     @BindView(R2.id.btnParnterReceipt)
     Button btnParnterReceipt;
@@ -113,7 +113,7 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
 
     @Override
     public TextView getTvBedNum() {
-        return tvBedNum;
+        return null;
     }
 
     @Override
@@ -123,7 +123,7 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
 
     @Override
     public TextView getTvRemark() {
-        return tvRemark;
+        return null;
     }
 
     @Override

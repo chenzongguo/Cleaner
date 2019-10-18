@@ -21,6 +21,10 @@ public class OrderCompleteActivity extends BaseActivity<IOrderCompleteAtView, Or
     @BindView(R2.id.tvCorpName)
     TextView tvCorpName;
 
+
+    @BindView(R2.id.Takephoto)
+    ImageView Takephoto;
+
     @BindView(R2.id.img_photo1)
     ImageView img_photo1;
     @BindView(R2.id.img_photo2)
@@ -30,14 +34,15 @@ public class OrderCompleteActivity extends BaseActivity<IOrderCompleteAtView, Or
     @BindView(R2.id.btnComplete)
     Button btnComplete;
 
+    private int i=1;
 
     @Override
     public void initListener() {
         super.initListener();
         btnComplete.setOnClickListener(v -> mPresenter.complete());
-        img_photo1.setOnClickListener(v -> mPresenter.takephoto(1));
-        img_photo2.setOnClickListener(v -> mPresenter.takephoto(2));
-        img_photo3.setOnClickListener(v -> mPresenter.takephoto(3));
+        Takephoto.setOnClickListener(v -> mPresenter.takephoto(i));
+//        img_photo2.setOnClickListener(v -> mPresenter.takephoto(2));
+//        img_photo3.setOnClickListener(v -> mPresenter.takephoto(3));
     }
 
 
@@ -51,6 +56,7 @@ public class OrderCompleteActivity extends BaseActivity<IOrderCompleteAtView, Or
             if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
                 return;
             }
+
             Bundle bundle = data.getExtras();
             Bitmap bitmap_locktype = (Bitmap) bundle.get("data");// 获取相机返回的数据，并转换为Bitmap图片格式
 //            PPBS_Code = CommonUtils.getCode();
@@ -71,6 +77,7 @@ public class OrderCompleteActivity extends BaseActivity<IOrderCompleteAtView, Or
                 System.out.println("成功======"+cameraBitmap.getWidth()+cameraBitmap.getHeight());
 
             }
+            i = i +1;
         }
     }
     @Override

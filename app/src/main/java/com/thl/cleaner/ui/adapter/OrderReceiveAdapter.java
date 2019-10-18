@@ -58,29 +58,34 @@ public class OrderReceiveAdapter extends BaseAdapter {
             holder.tvAddress = (TextView) convertView.findViewById(R.id.tvAddress);
             holder.tvPaymentPrice = (TextView) convertView.findViewById(R.id.tvPaymentPrice);
             holder.tvCorpName = (TextView) convertView.findViewById(R.id.tvCorpName);
-            holder.btn_receiveOrder = convertView.findViewById(R.id.btn_receive_order);
+            holder.tvRoomType = (TextView) convertView.findViewById(R.id.tvRoomType);
+//            holder.tvContactPhone = (TextView) convertView.findViewById(R.id.tvContactPhone);
+
+//            holder.btn_receiveOrder = convertView.findViewById(R.id.btn_receive_order);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.btn_receiveOrder.setOnClickListener(new android.view.View.OnClickListener() {
+//        holder.btn_receiveOrder.setOnClickListener(new android.view.View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                onClick.OrderReceive();
-            }
-        });
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                onClick.OrderReceive();
+//            }
+//        });
         holder.tvRoomName.setText(cleanerOrderBeanList.get(position).getCorp_room_name());
         holder.tvTime.setText(cleanerOrderBeanList.get(position).getDoor_time());
         holder.tvAddress.setText(cleanerOrderBeanList.get(position).getCorp_addr());
 //        holder.tvPaymentPrice.setText(cleanerOrderBeanList.get(position).getBed_num());
         holder.tvCorpName.setText(cleanerOrderBeanList.get(position).getCorp_name());
+        holder.tvRoomType.setText(cleanerOrderBeanList.get(position).getRoom_type_name());
+//        holder.tvContactPhone.setText(cleanerOrderBeanList.get(position).getCorp_name());
         return convertView;
     }
     class ViewHolder{
-        TextView tvTime,tvAddress,tvPaymentPrice,tvCorpName,tvRoomName;
-        Button btn_receiveOrder;
+        TextView tvTime,tvAddress,tvPaymentPrice,tvCorpName,tvRoomName,tvRoomType;
+//        Button btn_receiveOrder;
     }
 
     public interface OnListenerClick{

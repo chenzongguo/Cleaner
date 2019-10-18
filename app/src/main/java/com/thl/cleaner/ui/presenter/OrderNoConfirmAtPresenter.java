@@ -9,6 +9,7 @@ import com.thl.cleaner.api.ApiRetrofit;
 import com.thl.cleaner.model.Bean.CleanerOrderBean;
 import com.thl.cleaner.model.Bean.OrderBean;
 import com.thl.cleaner.model.request.GetOrderListRequest;
+import com.thl.cleaner.model.request.cleaner.CleanerOrderListRequest;
 import com.thl.cleaner.ui.activity.OrderDetailActivity;
 import com.thl.cleaner.ui.adapter.OrderReceiveAdapter;
 import com.thl.cleaner.ui.base.BaseActivity;
@@ -20,10 +21,12 @@ import java.util.List;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtView> {
+public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtView> implements OrderReceiveAdapter.OnListenerClick{
 
+//    private OrderReceiveAdapter orderReceiveAdapter;
+//    private List<CleanerOrderBean> orderBeanList;
     private OrderReceiveAdapter orderReceiveAdapter;
-    private List<CleanerOrderBean> orderBeanList;
+    private List<CleanerOrderBean> cleanerOrderBeanList;
 
     public OrderNoConfirmAtPresenter(BaseActivity context) {
         super(context);
@@ -32,26 +35,29 @@ public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtVi
         loadData();
     }
     private void  loadData(){
-        GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
-        getOrderListRequest.setType("1");
-        getOrderListRequest.setSelect_number("10");
-        getOrderListRequest.setStart_number("0");
-        getOrderListRequest.setOrder_state("4");
-        ApiRetrofit.getInstance().getOrderList(getOrderListRequest)
+        String order_room_state = mContext.getIntent().getStringExtra("order_room_state");
+        CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
+        cleanerOrderListRequest.setUser_id("5");
+        cleanerOrderListRequest.setSelect_number("10");
+        cleanerOrderListRequest.setStart_number("0");
+        cleanerOrderListRequest.setOrder_room_state(order_room_state);
+        ApiRetrofit.getInstance().cleanerOrderList(cleanerOrderListRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getOrderListResponse -> {
                     String code = getOrderListResponse.getCode();
                     if("000".equals(code)){
-                        orderBeanList =  getOrderListResponse.getData().getPaging_data();
+                        cleanerOrderBeanList =  getOrderListResponse.getData().getPaging_data();
 //                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
 //                        registerReceiver();
-                        if(orderBeanList!=null && orderBeanList.size()>0){
+                        if(cleanerOrderBeanList!=null && cleanerOrderBeanList.size()>0){
                             setAdapter();
                             getView().getImaNoOrder().setVisibility(View.GONE);
                         }else{
                             getView().getImaNoOrder().setVisibility(View.VISIBLE);
                         }
+
+
                     }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                     }
@@ -60,8 +66,8 @@ public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtVi
     private void setAdapter(){
 
         if(orderReceiveAdapter == null)
-            orderReceiveAdapter = new OrderReceiveAdapter(mContext,orderBeanList);
-//        orderReceiveAdapter.setOnClick(this);
+            orderReceiveAdapter = new OrderReceiveAdapter(mContext,cleanerOrderBeanList);
+        orderReceiveAdapter.setOnClick(this);
         getView().getLvOrderNoConfirm().setAdapter(orderReceiveAdapter);
         getView().getLvOrderNoConfirm().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -75,12 +81,17 @@ public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtVi
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(mContext,"listview点击事件",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, OrderDetailActivity.class);
-                intent.putExtra("order_id",orderBeanList.get(position).getOrder_id());
-                intent.putExtra("order_state",orderBeanList.get(position).getOrder_room_state());
+                intent.putExtra("order_room_id",cleanerOrderBeanList.get(position).getOrder_room_id());
+//                intent.putExtra("order_state",cleanerOrderBeanList.get(position).getOrder_room_state());
                 mContext.jumpToActivity(intent);
 //                mContext.jumpToActivityAndClearTop(OrderDetailActivity.class);
             }
         });
+    }
+
+    @Override
+    public void OrderReceive() {
+
     }
 
 //    @Override

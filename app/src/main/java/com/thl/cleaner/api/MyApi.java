@@ -21,8 +21,8 @@ import rx.Observable;
 public interface MyApi {
 
 //    public static final String BASE_URL = "http://218.94.111.86:8091/";
-//    public static final String BASE_URL = "http://192.168.20.190:8080/";
-    public static final String BASE_URL = "http://218.94.111.86:8091/";
+    public static final String BASE_URL = "http://192.168.20.190:8080/";
+//    public static final String BASE_URL = "http://218.94.111.86:8091/";
 
 
     //检查手机是否被注册
