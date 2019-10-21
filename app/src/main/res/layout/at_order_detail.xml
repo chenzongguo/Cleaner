@@ -830,6 +830,7 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/rlyNoCompelte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="visible">
@@ -880,6 +881,7 @@
         </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rlyCompelte"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone">
@@ -895,6 +897,7 @@
                         android:textSize="@dimen/text_20"
                         />
                     <Button
+                        android:id="@+id/btnCompelte"
                         android:layout_toLeftOf ="@id/btnEvaluation"
                         android:layout_width="130dp"
                         android:layout_height="60dp"

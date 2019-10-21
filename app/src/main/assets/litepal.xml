@@ -5,9 +5,9 @@
     <version value="1"></version>
 
     <list>
-        <mapping class="com.thl.cleaner.db.model.Customer"></mapping>
-        <mapping class="com.thl.cleaner.db.model.Photo"></mapping>
-        <mapping class="com.thl.cleaner.db.model.SysUser"></mapping>
-        <mapping class="com.thl.cleaner.db.model.UnlockBusiness"></mapping>
+        <mapping class="cn.njthl.cleaner.db.model.Customer"></mapping>
+        <mapping class="cn.njthl.cleaner.db.model.Photo"></mapping>
+        <mapping class="cn.njthl.cleaner.db.model.SysUser"></mapping>
+        <mapping class="cn.njthl.cleaner.db.model.UnlockBusiness"></mapping>
     </list>
 </litepal>

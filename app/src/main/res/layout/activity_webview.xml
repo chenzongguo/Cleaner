@@ -7,7 +7,7 @@
 
     <include layout="@layout/include_toolbar"/>
 
-    <com.thl.cleaner.widget.ProgressWebView
+    <cn.njthl.cleaner.widget.ProgressWebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
