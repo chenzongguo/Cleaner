@@ -27,6 +27,10 @@ public class OrderReceiveAdapter extends BaseAdapter {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.cleanerOrderBeanList = orderBeanlist;
     }
+
+    public void setOrderList(List<CleanerOrderBean> orderBeanlist){
+        this.cleanerOrderBeanList = orderBeanlist;
+    }
     @Override
     public int getCount() {
         if(cleanerOrderBeanList!=null)

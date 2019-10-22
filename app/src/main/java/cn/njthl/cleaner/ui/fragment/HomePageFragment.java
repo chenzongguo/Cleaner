@@ -26,7 +26,8 @@ public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPre
         mPresenter.getConversations();
     }
 
-//    @Override
+
+    //    @Override
 //    public void onResume() {
 //        super.onResume();
 //        mPresenter.getConversations();

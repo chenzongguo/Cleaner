@@ -38,6 +38,18 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
 
 //    @BindView(R2.id.tvRemark)
 //    TextView tvRemark;
+
+    @BindView(R2.id.tvCreateTime)
+    TextView tvCreateTime;
+
+    @BindView(R2.id.tvTime)
+    TextView tvTime;
+
+    @BindView(R2.id.tvContacts)
+    TextView tvContacts;
+
+    @BindView(R2.id.tvContactPhone)
+    TextView tvContactPhone;
 //
     @BindView(R2.id.btnParnterReceipt)
     Button btnParnterReceipt;
@@ -147,6 +159,26 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @Override
     public TextView getTvRemark() {
         return null;
+    }
+
+    @Override
+    public TextView getTvCreateTime() {
+        return tvCreateTime;
+    }
+
+    @Override
+    public TextView getTvTime() {
+        return tvTime;
+    }
+
+    @Override
+    public TextView getTvContacts() {
+        return tvContacts;
+    }
+
+    @Override
+    public TextView getTvContactPhone() {
+        return tvContactPhone;
     }
 
     @Override

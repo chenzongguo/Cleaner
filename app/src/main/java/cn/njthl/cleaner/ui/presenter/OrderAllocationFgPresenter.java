@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import cn.njthl.cleaner.api.ApiRetrofit;
+import cn.njthl.cleaner.app.AppConst;
 import cn.njthl.cleaner.model.Bean.CleanerOrderBean;
 import cn.njthl.cleaner.model.request.cleaner.CleanerOrderListRequest;
 import cn.njthl.cleaner.ui.activity.OrderDetailActivity;
@@ -35,7 +36,7 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
     }
     private void  loadData(){
         CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-        cleanerOrderListRequest.setUser_id("5");
+        cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
         cleanerOrderListRequest.setSelect_number("10");
         cleanerOrderListRequest.setStart_number("0");
 //        cleanerOrderListRequest.setOrder_room_state("2");
@@ -67,6 +68,7 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
         if(orderAllocationAdapter == null)
             orderAllocationAdapter = new OrderAllocationAdapter(mContext,cleanerOrderBeanList);
         orderAllocationAdapter.setOnClick(this);
+        orderAllocationAdapter.setOrderList(cleanerOrderBeanList);
         getView().getLvOrderAllocation().setAdapter(orderAllocationAdapter);
         getView().getLvOrderAllocation().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -85,6 +87,8 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
                 mContext.jumpToActivity(intent);
             }
         });
+        if (orderAllocationAdapter != null)
+            orderAllocationAdapter.notifyDataSetChanged();
     }
 
     @Override

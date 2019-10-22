@@ -13,6 +13,10 @@ public interface IOrderDetailAtView {
     TextView getTvBedNum();
     TextView getTvOrderId();
     TextView getTvRemark();
+    TextView getTvCreateTime();
+    TextView getTvTime();
+    TextView getTvContacts();
+    TextView getTvContactPhone();
     Button getBtnParnterReceipt();
     RelativeLayout getRlyNoCompelte();
     RelativeLayout getRlyCompelte();

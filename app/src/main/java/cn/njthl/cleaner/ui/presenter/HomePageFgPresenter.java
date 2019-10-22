@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import cn.njthl.cleaner.api.ApiRetrofit;
+import cn.njthl.cleaner.app.AppConst;
 import cn.njthl.cleaner.model.Bean.CleanerOrderBean;
 import cn.njthl.cleaner.model.request.cleaner.CleanerOrderListRequest;
 import cn.njthl.cleaner.ui.activity.OrderDetailActivity;
@@ -34,7 +35,7 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
     }
     private void  loadData(){
         CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-        cleanerOrderListRequest.setUser_id("5");
+        cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
         cleanerOrderListRequest.setSelect_number("10");
         cleanerOrderListRequest.setStart_number("0");
         cleanerOrderListRequest.setOrder_room_state("2");
@@ -64,6 +65,7 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
 
         if(orderReceiveAdapter == null)
         orderReceiveAdapter = new OrderReceiveAdapter(mContext,cleanerOrderBeanList);
+        orderReceiveAdapter.setOrderList(cleanerOrderBeanList);
         orderReceiveAdapter.setOnClick(this);
         getView().getLvOrderReceive().setAdapter(orderReceiveAdapter);
         getView().getLvOrderReceive().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -84,6 +86,8 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
 //                mContext.jumpToActivityAndClearTop(OrderDetailActivity.class);
             }
         });
+        if (orderReceiveAdapter != null)
+            orderReceiveAdapter.notifyDataSetChanged();
     }
 
     @Override
