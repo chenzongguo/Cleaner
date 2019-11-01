@@ -1,15 +1,36 @@
 package cn.njthl.cleaner.ui.fragment;
 
+import android.widget.TextView;
+
+import butterknife.BindView;
 import cn.njthl.cleaner.R;
+import cn.njthl.cleaner.R2;
+import cn.njthl.cleaner.ui.activity.MainActivity;
 import cn.njthl.cleaner.ui.base.BaseFragment;
 import cn.njthl.cleaner.ui.presenter.MeFgPresenter;
 import cn.njthl.cleaner.ui.view.MeFgView;
 
 public class MeFragment extends BaseFragment<MeFgView, MeFgPresenter> implements MeFgView {
 
+    @BindView(R2.id.tvUserInfo)
+    TextView tvUserInfo;
+
+//    @BindView(R2.id.tvUserInvitation)
+//    TextView tvUserInvitation;
+
+    @BindView(R2.id.tv_setting)
+    TextView tv_setting;
+
+    @Override
+    public void initListener() {
+        super.initListener();
+        tvUserInfo.setOnClickListener(v -> mPresenter.toUserManageActivity());
+        tv_setting.setOnClickListener(v -> mPresenter.toSettingActivity());
+    }
+
     @Override
     protected MeFgPresenter createPresenter() {
-        return null;
+        return new MeFgPresenter((MainActivity) getActivity());
     }
 
     @Override

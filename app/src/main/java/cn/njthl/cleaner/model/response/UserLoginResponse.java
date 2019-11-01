@@ -35,6 +35,7 @@ public class UserLoginResponse {
         private String user_id;
         private String user_token;
         private String role_id;
+        private String is_complete;
 
         public String getUser_id() {
             return user_id;
@@ -55,9 +56,16 @@ public class UserLoginResponse {
         public String getRole_id() {
             return role_id;
         }
-
         public void setRole_id(String role_id) {
             this.role_id = role_id;
+        }
+
+        public String getIs_complete() {
+            return is_complete;
+        }
+
+        public void setIs_complete(String is_complete) {
+            this.is_complete = is_complete;
         }
     }
 }

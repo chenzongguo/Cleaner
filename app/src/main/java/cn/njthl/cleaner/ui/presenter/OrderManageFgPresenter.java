@@ -17,7 +17,7 @@ public class OrderManageFgPresenter extends BasePresenter<OrderManageFgView> {
         intent.putExtra("order_room_state",Order_room_state);
 //                intent.putExtra("order_state",cleanerOrderBeanList.get(position).getOrder_room_state());
         mContext.jumpToActivity(intent);
-        mContext.jumpToActivityAndClearTop(OrderNoConfirmActivity.class);
+//        mContext.jumpToActivityAndClearTop(OrderNoConfirmActivity.class);
     }
 
 

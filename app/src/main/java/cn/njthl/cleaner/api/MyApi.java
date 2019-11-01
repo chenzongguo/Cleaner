@@ -5,6 +5,7 @@ import cn.njthl.cleaner.model.response.CheckUpdateResponse;
 import cn.njthl.cleaner.model.response.GetCleanPicResponse;
 import cn.njthl.cleaner.model.response.GetOrderListResponse;
 import cn.njthl.cleaner.model.response.GetOrderResponse;
+import cn.njthl.cleaner.model.response.GetUserListResponse;
 import cn.njthl.cleaner.model.response.UserLoginResponse;
 import cn.njthl.cleaner.model.response.cleaner.CleanerOrderListResponse;
 import cn.njthl.cleaner.model.response.cleaner.CleanerOrderResponse;
@@ -22,8 +23,8 @@ import rx.Observable;
 public interface MyApi {
 
 //    public static final String BASE_URL = "http://218.94.111.86:8091/";
-    public static final String BASE_URL = "http://192.168.20.190:8080/";
-//    public static final String BASE_URL = "http://218.94.111.86:8091/";
+//    public static final String BASE_URL = "http://192.168.20.190:8080/";
+    public static final String BASE_URL = "http://218.94.111.86:8091/";
 
 
     //检查手机是否被注册
@@ -48,10 +49,17 @@ public interface MyApi {
     //验证短信验证码
     @POST("hsp/tool/checkCaptcha.do")
     Observable<BaseResponse> checkCaptcha(@Body RequestBody jsonString);
-
+    //验证手机号是否存在
+    @POST("hsp/user/checkUserPhone.do")
+    Observable<BaseResponse> checkUserPhone(@Body RequestBody jsonString);
     //用户注册
     @POST("hsp/user/userRegister.do")
     Observable<BaseResponse> userRegister(@Body RequestBody jsonString);
+
+
+    //用户信息完善
+    @POST("hsp/user/userPerfectData.do")
+    Observable<BaseResponse> userPerfectData(@Body RequestBody jsonString);
 
     //用户登录
     @POST("hsp/user/userLogin.do")
@@ -60,6 +68,11 @@ public interface MyApi {
     //token登录
     @POST("hsp/tool/checkUserToken.do")
     Observable<BaseResponse> checkUserToken(@Body RequestBody jsonString);
+
+
+    //用户登录
+    @POST("hsp/user/getUserList.do")
+    Observable<GetUserListResponse> getUserList(@Body RequestBody jsonString);
 
     //订单信息查询
     @POST("hsp/order/getOrderList.do")

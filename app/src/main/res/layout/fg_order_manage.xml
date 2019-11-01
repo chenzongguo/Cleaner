@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_NoArriveCorp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="待上门"
+            android:textColor="@color/assist_green1"
+            android:textSize="@dimen/text_20"/>
+        <TextView
+            android:id="@+id/tv_ArriveCrop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="已上门"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_20"/>
+        <TextView
+            android:id="@+id/tv_CleanComplete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="已打扫"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_20"/>
+        <TextView
+            android:id="@+id/tv_OrderComplete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="已完成"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_20"
+            android:visibility="gone"/>
+    </LinearLayout>
+    <cn.njthl.cleaner.widget.MyListView
+        android:id="@+id/lv_Order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:divider="@null"
+        android:fadingEdge="none"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:dividerHeight="10dp" />
+</LinearLayout>

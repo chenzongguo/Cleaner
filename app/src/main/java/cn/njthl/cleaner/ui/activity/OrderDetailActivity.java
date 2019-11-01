@@ -30,6 +30,9 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @BindView(R2.id.tvRoomType)
     TextView tvRoomType;
 
+    @BindView(R2.id.tvRoomState)
+    TextView tvRoomState;
+
 //    @BindView(R2.id.tvBedNum)
 //    TextView tvBedNum;
 
@@ -88,12 +91,18 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimary), 10);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
     }
     @Override
     protected void onResume() {
         super.onResume();
         mPresenter.getConversations();
+    }
+
+    @Override
+    public void initView() {
+        super.initView();
+        mToolbarTitle.setText("订单详情");
     }
 
     @Override
@@ -147,6 +156,11 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     }
 
     @Override
+    public TextView getTvRoomState() {
+        return tvRoomState;
+    }
+
+    @Override
     public TextView getTvBedNum() {
         return null;
     }
@@ -184,6 +198,11 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @Override
     public Button getBtnParnterReceipt() {
         return btnParnterReceipt;
+    }
+
+    @Override
+    public Button getBtnEvaluation() {
+        return btnEvaluation;
     }
 
     @Override

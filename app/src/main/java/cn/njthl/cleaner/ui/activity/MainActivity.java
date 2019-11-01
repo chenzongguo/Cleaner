@@ -1,12 +1,16 @@
 package cn.njthl.cleaner.ui.activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.jaeger.library.StatusBarUtil;
+
+import androidx.annotation.Nullable;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.R2;
 import cn.njthl.cleaner.ui.adapter.CommonFragmentPagerAdapter;
@@ -47,20 +51,20 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
     @BindView(R2.id.tvMessageCount)
     public TextView mTvMessageCount;
 
-    @BindView(R2.id.llContacts)
-    LinearLayout mLlContacts;
-    @BindView(R2.id.tvContactsNormal)
-    TextView mTvContactsNormal;
-    @BindView(R2.id.tvContactsPress)
-    TextView mTvContactsPress;
-    @BindView(R2.id.tvContactsTextNormal)
-    TextView mTvContactsTextNormal;
-    @BindView(R2.id.tvContactsTextPress)
-    TextView mTvContactsTextPress;
-    @BindView(R2.id.tvContactCount)
-    public TextView mTvContactCount;
-    @BindView(R2.id.tvContactRedDot)
-    public TextView mTvContactRedDot;
+//    @BindView(R2.id.llContacts)
+//    LinearLayout mLlContacts;
+//    @BindView(R2.id.tvContactsNormal)
+//    TextView mTvContactsNormal;
+//    @BindView(R2.id.tvContactsPress)
+//    TextView mTvContactsPress;
+//    @BindView(R2.id.tvContactsTextNormal)
+//    TextView mTvContactsTextNormal;
+//    @BindView(R2.id.tvContactsTextPress)
+//    TextView mTvContactsTextPress;
+//    @BindView(R2.id.tvContactCount)
+//    public TextView mTvContactCount;
+//    @BindView(R2.id.tvContactRedDot)
+//    public TextView mTvContactRedDot;
 
     @BindView(R2.id.llDiscovery)
     LinearLayout mLlDiscovery;
@@ -94,6 +98,12 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         commonFragmentPagerAdapter.notifyDataSetChanged();
@@ -103,8 +113,9 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
     public void initView() {
 //        StatusBarUtil.setTranslucent(this);
 //        StatusBarUtil.setColorNoTranslucent(this,UIUtils.getColor(R.color.side_bar_pressed));
-        setToolbarTitle(UIUtils.getString(R.string.app_name));
-        mIbAddMenu.setVisibility(View.VISIBLE);
+        mIbAddMenu.setVisibility(View.GONE);
+        mAppBar.setVisibility(View.VISIBLE);
+        setToolbarTitle("首页");
 
         //等待全局数据获取完毕
 //        showWaitingDialog(UIUtils.getString(R.string.please_wait));
@@ -115,10 +126,10 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
         mTvMessageTextPress.setTextColor(Color.argb(255, 69, 192, 26));
 
         //设置ViewPager的最大缓存页面
-        mVpContent.setOffscreenPageLimit(0);
+        mVpContent.setOffscreenPageLimit(2);
 
         mFragmentList.add(FragmentFactory.getInstance().getHomePageFragment());
-        mFragmentList.add(FragmentFactory.getInstance().getOrderAllocationFragment());
+//        mFragmentList.add(FragmentFactory.getInstance().getOrderAllocationFragment());
         mFragmentList.add(FragmentFactory.getInstance().getOrderManageFragment());
         mFragmentList.add(FragmentFactory.getInstance().getMeFragment());
         commonFragmentPagerAdapter = new CommonFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
@@ -150,7 +161,7 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
         });
 
         mLlMessage.setOnClickListener(v -> bottomBtnClick(v));
-        mLlContacts.setOnClickListener(v -> bottomBtnClick(v));
+//        mLlContacts.setOnClickListener(v -> bottomBtnClick(v));
         mLlDiscovery.setOnClickListener(v -> bottomBtnClick(v));
         mLlMe.setOnClickListener(v -> bottomBtnClick(v));
         mVpContent.setOnPageChangeListener(this);
@@ -192,22 +203,29 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
         setTransparency();
         switch (view.getId()) {
             case R.id.llMessage:
+                mToolbarTitle.setText("首页");
                 mVpContent.setCurrentItem(0, false);
                 mTvMessagePress.getBackground().setAlpha(255);
                 mTvMessageTextPress.setTextColor(Color.argb(255, 69, 192, 26));
                 break;
-            case R.id.llContacts:
-                mVpContent.setCurrentItem(1, false);
-                mTvContactsPress.getBackground().setAlpha(255);
-                mTvContactsTextPress.setTextColor(Color.argb(255, 69, 192, 26));
-                break;
+//            case R.id.llContacts:
+//                mAppBar.setVisibility(View.VISIBLE);
+//                mToolbarTitle.setText("未完成订单");
+//                mVpContent.setCurrentItem(1, false);
+//                mTvContactsPress.getBackground().setAlpha(255);
+//                mTvContactsTextPress.setTextColor(Color.argb(255, 69, 192, 26));
+//                break;
             case R.id.llDiscovery:
-                mVpContent.setCurrentItem(2, false);
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("订单管理");
+                mVpContent.setCurrentItem(1, false);
                 mTvDiscoveryPress.getBackground().setAlpha(255);
                 mTvDiscoveryTextPress.setTextColor(Color.argb(255, 69, 192, 26));
                 break;
             case R.id.llMe:
-                mVpContent.setCurrentItem(3, false);
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("我的");
+                mVpContent.setCurrentItem(2, false);
                 mTvMePress.getBackground().setAlpha(255);
                 mTvMeTextPress.setTextColor(Color.argb(255, 69, 192, 26));
                 break;
@@ -219,19 +237,19 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
      */
     private void setTransparency() {
         mTvMessageNormal.getBackground().setAlpha(255);
-        mTvContactsNormal.getBackground().setAlpha(255);
+//        mTvContactsNormal.getBackground().setAlpha(255);
         mTvDiscoveryNormal.getBackground().setAlpha(255);
         mTvMeNormal.getBackground().setAlpha(255);
         mTvMessagePress.getBackground().setAlpha(1);
-        mTvContactsPress.getBackground().setAlpha(1);
+//        mTvContactsPress.getBackground().setAlpha(1);
         mTvDiscoveryPress.getBackground().setAlpha(1);
         mTvMePress.getBackground().setAlpha(1);
         mTvMessageTextNormal.setTextColor(Color.argb(255, 153, 153, 153));
-        mTvContactsTextNormal.setTextColor(Color.argb(255, 153, 153, 153));
+//        mTvContactsTextNormal.setTextColor(Color.argb(255, 153, 153, 153));
         mTvDiscoveryTextNormal.setTextColor(Color.argb(255, 153, 153, 153));
         mTvMeTextNormal.setTextColor(Color.argb(255, 153, 153, 153));
         mTvMessageTextPress.setTextColor(Color.argb(0, 69, 192, 26));
-        mTvContactsTextPress.setTextColor(Color.argb(0, 69, 192, 26));
+//        mTvContactsTextPress.setTextColor(Color.argb(0, 69, 192, 26));
         mTvDiscoveryTextPress.setTextColor(Color.argb(0, 69, 192, 26));
         mTvMeTextPress.setTextColor(Color.argb(0, 69, 192, 26));
     }
@@ -260,24 +278,24 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
             case 0:
                 mTvMessageNormal.getBackground().setAlpha(diaphaneity_one);
                 mTvMessagePress.getBackground().setAlpha(diaphaneity_two);
-                mTvContactsNormal.getBackground().setAlpha(diaphaneity_two);
-                mTvContactsPress.getBackground().setAlpha(diaphaneity_one);
-                mTvMessageTextNormal.setTextColor(Color.argb(diaphaneity_one, 153, 153, 153));
-                mTvMessageTextPress.setTextColor(Color.argb(diaphaneity_two, 69, 192, 26));
-                mTvContactsTextNormal.setTextColor(Color.argb(diaphaneity_two, 153, 153, 153));
-                mTvContactsTextPress.setTextColor(Color.argb(diaphaneity_one, 69, 192, 26));
-                break;
-            case 1:
-                mTvContactsNormal.getBackground().setAlpha(diaphaneity_one);
-                mTvContactsPress.getBackground().setAlpha(diaphaneity_two);
                 mTvDiscoveryNormal.getBackground().setAlpha(diaphaneity_two);
                 mTvDiscoveryPress.getBackground().setAlpha(diaphaneity_one);
-                mTvContactsTextNormal.setTextColor(Color.argb(diaphaneity_one, 153, 153, 153));
-                mTvContactsTextPress.setTextColor(Color.argb(diaphaneity_two, 69, 192, 26));
-                mTvDiscoveryTextNormal.setTextColor(Color.argb(diaphaneity_two, 153, 153, 153));
-                mTvDiscoveryTextPress.setTextColor(Color.argb(diaphaneity_one, 69, 192, 26));
+                mTvMessageTextNormal.setTextColor(Color.argb(diaphaneity_one, 153, 153, 153));
+                mTvMessageTextPress.setTextColor(Color.argb(diaphaneity_two, 69, 192, 26));
+                mTvDiscoveryNormal.setTextColor(Color.argb(diaphaneity_two, 153, 153, 153));
+                mTvDiscoveryPress.setTextColor(Color.argb(diaphaneity_one, 69, 192, 26));
                 break;
-            case 2:
+//            case 1:
+//                mTvContactsNormal.getBackground().setAlpha(diaphaneity_one);
+//                mTvContactsPress.getBackground().setAlpha(diaphaneity_two);
+//                mTvDiscoveryNormal.getBackground().setAlpha(diaphaneity_two);
+//                mTvDiscoveryPress.getBackground().setAlpha(diaphaneity_one);
+//                mTvContactsTextNormal.setTextColor(Color.argb(diaphaneity_one, 153, 153, 153));
+//                mTvContactsTextPress.setTextColor(Color.argb(diaphaneity_two, 69, 192, 26));
+//                mTvDiscoveryTextNormal.setTextColor(Color.argb(diaphaneity_two, 153, 153, 153));
+//                mTvDiscoveryTextPress.setTextColor(Color.argb(diaphaneity_one, 69, 192, 26));
+//                break;
+            case 1:
                 mTvDiscoveryNormal.getBackground().setAlpha(diaphaneity_one);
                 mTvDiscoveryPress.getBackground().setAlpha(diaphaneity_two);
                 mTvMeNormal.getBackground().setAlpha(diaphaneity_two);
@@ -292,7 +310,24 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
 
     @Override
     public void onPageSelected(int position) {
-
+        switch (position) {
+            case 0:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("首页");
+                break;
+//            case 1:
+//                mAppBar.setVisibility(View.VISIBLE);
+//                mToolbarTitle.setText("未完成订单");
+//                break;
+            case 1:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("订单管理");
+                break;
+            case 2:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("我的");
+                break;
+        }
     }
 
     @Override

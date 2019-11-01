@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import cn.njthl.cleaner.app.MyApp;
 import cn.njthl.cleaner.app.base.BaseApp;
-
 
 
 /**
@@ -39,6 +39,7 @@ public class UIUtils {
             mToast = Toast.makeText(getContext(), "", duration);
         }
         mToast.setText(msg);
+        mToast.setGravity(Gravity.CENTER, 0, 0);
         mToast.show();
     }
 

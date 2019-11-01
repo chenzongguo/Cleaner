@@ -11,11 +11,12 @@ import cn.njthl.cleaner.ui.presenter.OrderAllocationFgPresenter;
 import cn.njthl.cleaner.ui.view.OrderAllocationFgView;
 
 import butterknife.BindView;
+import cn.njthl.cleaner.widget.MyListView;
 
 public class OrderAllocationFragment extends BaseFragment<OrderAllocationFgView, OrderAllocationFgPresenter> implements OrderAllocationFgView{
 
     @BindView(R2.id.lv_order_allocation)
-    ListView lv_OrderAllocation;
+    MyListView lv_OrderAllocation;
 
     @BindView(R2.id.img_NoOrder)
     ImageView img_NoOrder;
@@ -43,7 +44,7 @@ public class OrderAllocationFragment extends BaseFragment<OrderAllocationFgView,
     }
 
     @Override
-    public ListView getLvOrderAllocation() {
+    public MyListView getLvOrderAllocation() {
         return lv_OrderAllocation;
     }
 

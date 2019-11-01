@@ -19,6 +19,7 @@ public class AppConst {
     public static final String FETCH_COMPLETE = "fetch_complete";
 
     public static String USER_TOKEN ="";
+    public static String Is_complete ="";
 
     public static String USER_ID ="";
     public static String ROLE_ID ="";

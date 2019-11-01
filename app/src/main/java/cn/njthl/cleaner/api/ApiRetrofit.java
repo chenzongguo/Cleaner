@@ -3,14 +3,17 @@ package cn.njthl.cleaner.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import cn.njthl.cleaner.api.base.BaseApiRetrofit;
+import cn.njthl.cleaner.model.Bean.UserPerfectBean;
 import cn.njthl.cleaner.model.request.BaseRequest;
 import cn.njthl.cleaner.model.request.ChangeStateRequest;
 import cn.njthl.cleaner.model.request.CheckCaptchaRequest;
 import cn.njthl.cleaner.model.request.CheckUpdateRequest;
+import cn.njthl.cleaner.model.request.CheckUserPhoneRequest;
 import cn.njthl.cleaner.model.request.GetCleanPicRequest;
 import cn.njthl.cleaner.model.request.GetOrderListRequest;
 import cn.njthl.cleaner.model.request.GetOrderRequest;
 import cn.njthl.cleaner.model.request.GetTokenRequest;
+import cn.njthl.cleaner.model.request.GetUserListRequest;
 import cn.njthl.cleaner.model.request.ParnterReceiptRequest;
 import cn.njthl.cleaner.model.request.SendCaptchaRequest;
 import cn.njthl.cleaner.model.request.UpdateOrderRoomStateRequest;
@@ -26,6 +29,7 @@ import cn.njthl.cleaner.model.response.CheckUpdateResponse;
 import cn.njthl.cleaner.model.response.GetCleanPicResponse;
 import cn.njthl.cleaner.model.response.GetOrderListResponse;
 import cn.njthl.cleaner.model.response.GetOrderResponse;
+import cn.njthl.cleaner.model.response.GetUserListResponse;
 import cn.njthl.cleaner.model.response.UserLoginResponse;
 import cn.njthl.cleaner.model.response.cleaner.CleanerOrderListResponse;
 import cn.njthl.cleaner.model.response.cleaner.CleanerOrderResponse;
@@ -119,9 +123,19 @@ public class ApiRetrofit extends BaseApiRetrofit {
         return mApi.checkCaptcha(getRequestBody(new CheckCaptchaRequest(phone,captcha)));
     }
 
+
+    //用户注册
+    public Observable<BaseResponse> checkUserPhone( String phone) {
+        return mApi.checkUserPhone(getRequestBody(new CheckUserPhoneRequest(phone)));
+    }
     //用户注册
     public Observable<BaseResponse> userRegister( String phone, String pwd) {
         return mApi.userRegister(getRequestBody(new UserRegisterRequest(phone,pwd)));
+    }
+
+    //用户信息完善
+    public Observable<BaseResponse> userPerfectData(UserPerfectBean userPerfectBean) {
+        return mApi.userPerfectData(getUserTokenRequestBody(userPerfectBean));
     }
 
     //用户登录
@@ -133,7 +147,10 @@ public class ApiRetrofit extends BaseApiRetrofit {
     public Observable<BaseResponse> checkUserToken() {
         return mApi.checkUserToken(getUserTokenRequestBody(""));
     }
-
+    //用户登录
+    public Observable<GetUserListResponse> getUserList(GetUserListRequest getUserListRequest) {
+        return mApi.getUserList(getUserTokenRequestBody(getUserListRequest));
+    }
 
     //商户信息完善
 

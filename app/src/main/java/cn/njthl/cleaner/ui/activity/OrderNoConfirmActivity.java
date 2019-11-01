@@ -4,6 +4,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 
+import com.jaeger.library.StatusBarUtil;
+
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.R2;
 import cn.njthl.cleaner.ui.base.BaseActivity;
@@ -11,6 +13,7 @@ import cn.njthl.cleaner.ui.presenter.OrderNoConfirmAtPresenter;
 import cn.njthl.cleaner.ui.view.IOrderNoConfirmAtView;
 
 import butterknife.BindView;
+import cn.njthl.cleaner.util.UIUtils;
 
 public class OrderNoConfirmActivity extends BaseActivity<IOrderNoConfirmAtView, OrderNoConfirmAtPresenter> implements IOrderNoConfirmAtView {
 
@@ -24,6 +27,13 @@ public class OrderNoConfirmActivity extends BaseActivity<IOrderNoConfirmAtView, 
     protected void onResume() {
         super.onResume();
         mPresenter.getConversations();
+    }
+
+    @Override
+    public void initView() {
+        super.initView();
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
+        mToolbarTitle.setText("订单列表");
     }
 
     @Override

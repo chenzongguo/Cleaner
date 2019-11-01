@@ -20,12 +20,6 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
 
-import cn.njthl.cleaner.R;
-import cn.njthl.cleaner.R2;
-import cn.njthl.cleaner.app.MyApp;
-import cn.njthl.cleaner.ui.activity.WebViewActivity;
-import cn.njthl.cleaner.widget.CustomDialog;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +30,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.njthl.cleaner.R;
+import cn.njthl.cleaner.R2;
+import cn.njthl.cleaner.app.MyApp;
+import cn.njthl.cleaner.ui.activity.WebViewActivity;
+import cn.njthl.cleaner.util.ActivityCollectorUtils;
+import cn.njthl.cleaner.widget.CustomDialog;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCompatActivity {
@@ -69,7 +69,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         super.onCreate(savedInstanceState);
         MyApp.activities.add(this);
         init();
-
+        ActivityCollectorUtils.addActivity(this);
         //判断是否使用MVP模式
         mPresenter = createPresenter();
         if (mPresenter != null) {
@@ -130,6 +130,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        ActivityCollectorUtils.removeActivity(this);
         if (mPresenter != null) {
             mPresenter.detachView();
         }

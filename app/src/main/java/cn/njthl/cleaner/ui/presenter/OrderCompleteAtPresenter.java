@@ -94,6 +94,7 @@ public class OrderCompleteAtPresenter extends BasePresenter<IOrderCompleteAtView
                             getView().getBtnComplete().setEnabled(false);
                         getView().getBtnComplete().setText("订单已完成");
                         Toast.makeText(mContext, "提交信息成功", Toast.LENGTH_SHORT).show();
+                        mContext.finish();
                     }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
@@ -101,6 +102,10 @@ public class OrderCompleteAtPresenter extends BasePresenter<IOrderCompleteAtView
                 });
     }
     public void takephoto(int i){
+        if(i>8){
+            Toast.makeText(mContext, "最多只能拍八张照片", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         mContext.startActivityForResult(intent, i);
     }

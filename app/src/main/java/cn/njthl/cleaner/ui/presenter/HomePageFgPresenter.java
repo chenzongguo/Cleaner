@@ -3,10 +3,14 @@ package cn.njthl.cleaner.ui.presenter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.api.ApiRetrofit;
 import cn.njthl.cleaner.app.AppConst;
 import cn.njthl.cleaner.model.Bean.CleanerOrderBean;
@@ -19,12 +23,20 @@ import cn.njthl.cleaner.ui.view.HomePageFgView;
 
 import java.util.List;
 
+import cn.njthl.cleaner.util.LogUtils;
+import cn.njthl.cleaner.util.UIUtils;
+import cn.njthl.cleaner.widget.MyListView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+
 
 public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implements OrderReceiveAdapter.OnListenerClick {
     private OrderReceiveAdapter orderReceiveAdapter;
     private List<CleanerOrderBean> cleanerOrderBeanList;
+    private LayoutInflater inflater;
+
+    // ListView头部下拉刷新的布局
+    private LinearLayout LlyListNull;
     public HomePageFgPresenter(BaseActivity context) {
         super(context);
     }
@@ -34,6 +46,13 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
 
     }
     private void  loadData(){
+
+        if(LlyListNull==null){
+            inflater = LayoutInflater.from(mContext);
+            LlyListNull = (LinearLayout) inflater.inflate(R.layout.include_list_null, null);
+            getView().getLvOrderReceive().addFooterView(LlyListNull);
+        }
+
         CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
         cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
         cleanerOrderListRequest.setSelect_number("10");
@@ -50,16 +69,17 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
 //                        registerReceiver();
                         if(cleanerOrderBeanList!=null && cleanerOrderBeanList.size()>0){
                             setAdapter();
-                            getView().getImaNoOrder().setVisibility(View.GONE);
+                            LlyListNull.setVisibility(View.GONE);
                         }else{
-                            getView().getImaNoOrder().setVisibility(View.VISIBLE);
+                            setAdapter();
+                            LlyListNull.setVisibility(View.VISIBLE);
                         }
 
 
                     }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                },HomePageFgPresenter.this::loginError);
     }
     private void setAdapter(){
 
@@ -68,6 +88,64 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
         orderReceiveAdapter.setOrderList(cleanerOrderBeanList);
         orderReceiveAdapter.setOnClick(this);
         getView().getLvOrderReceive().setAdapter(orderReceiveAdapter);
+        getView().getLvOrderReceive().setonRefreshListener(new MyListView.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+//                new AsyncTask<Void, Void, Void>() {
+//                    protected Void doInBackground(Void... params) {
+//                        try {
+//                            Thread.sleep(1000);
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                        return null;
+//                    }
+//
+//                    @Override
+//                    protected void onPostExecute(Void result) {
+//                        orderReceiveAdapter.notifyDataSetChanged();
+//                        getView().getLvOrderReceive().onRefreshComplete();
+//                    }
+//                }.execute(null, null, null);
+
+                CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
+                cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
+                cleanerOrderListRequest.setSelect_number("10");
+                cleanerOrderListRequest.setStart_number("0");
+                cleanerOrderListRequest.setOrder_room_state("2");
+                ApiRetrofit.getInstance().cleanerOrderList(cleanerOrderListRequest)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(getOrderListResponse -> {
+                            String code = getOrderListResponse.getCode();
+                            if("000".equals(code)){
+                                cleanerOrderBeanList =  getOrderListResponse.getData().getPaging_data();
+                                orderReceiveAdapter.setOrderList(cleanerOrderBeanList);
+//                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
+//                        registerReceiver();
+//                                if(cleanerOrderBeanList!=null && cleanerOrderBeanList.size()>0){
+//                                    setAdapter();
+//                                    getView().getImaNoOrder().setVisibility(View.GONE);
+//                                }else{
+//                                    getView().getImaNoOrder().setVisibility(View.VISIBLE);
+//                                }
+                                if(cleanerOrderBeanList!=null && cleanerOrderBeanList.size()>0){
+                                    LlyListNull.setVisibility(View.GONE);
+                                }else{
+                                    LlyListNull.setVisibility(View.VISIBLE);
+                                }
+                                orderReceiveAdapter.notifyDataSetChanged();
+                                getView().getLvOrderReceive().onRefreshComplete();
+
+                            }else{
+                                getView().getLvOrderReceive().onRefreshComplete();
+                        Toast.makeText(mContext, getOrderListResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        },HomePageFgPresenter.this::loginError);
+
+            }
+        });
         getView().getLvOrderReceive().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -79,6 +157,11 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(mContext,"listview点击事件",Toast.LENGTH_SHORT).show();
+
+                if(cleanerOrderBeanList.size() == 0)
+                    return;
+                if (position>0)
+                    position = position - 1;
                 Intent intent = new Intent(mContext, OrderDetailActivity.class);
                 intent.putExtra("order_room_id",cleanerOrderBeanList.get(position).getOrder_room_id());
 //                intent.putExtra("order_state",cleanerOrderBeanList.get(position).getOrder_room_state());
@@ -111,5 +194,10 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
         });
 
         builder.create().show();
+    }
+
+    private void loginError(Throwable throwable) {
+        LogUtils.e(throwable.getLocalizedMessage());
+        UIUtils.showToast(throwable.getLocalizedMessage());
     }
 }

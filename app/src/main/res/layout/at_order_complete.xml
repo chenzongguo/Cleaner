@@ -8,99 +8,6 @@
         layout="@layout/include_toolbar"
         />
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/corners_round"-->
-<!--        android:orientation="vertical"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:padding="15dp">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:padding="15dp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="48sp"-->
-<!--                android:layout_height="48sp"-->
-<!--                android:src="@mipmap/head_portrait"-->
-<!--                />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvCorpName"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:text="南京君泰国际大酒店"-->
-<!--                android:textSize="18sp"/>-->
-
-
-<!--        </LinearLayout>-->
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0.5dp"-->
-<!--            android:layout_marginTop="7dp"-->
-<!--            android:background="@color/black" />-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:orientation="vertical">-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:text="照片一"/>-->
-<!--            <ImageView-->
-<!--                android:id="@+id/img_photo1"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:background="@drawable/ic_nj_banner"-->
-<!--                />-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:orientation="vertical">-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:text="照片二"/>-->
-<!--            <ImageView-->
-<!--                android:id="@+id/img_photo2"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:background="@drawable/ic_nj_banner"-->
-<!--                />-->
-
-<!--        </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:orientation="vertical">-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_alignParentLeft="true"-->
-<!--                    android:text="照片三"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/img_photo3"-->
-<!--                    android:layout_width="200dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:background="@drawable/ic_nj_banner"-->
-<!--                    />-->
-<!--            </LinearLayout>-->
-<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -145,6 +52,83 @@
         android:layout_marginTop="7dp"
         android:background="@color/line" />
 
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="10dp"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:id="@+id/Takephoto"-->
+<!--            android:layout_width="50sp"-->
+<!--            android:layout_height="50sp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:src="@drawable/taking_pic"-->
+<!--            />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_photo1"-->
+<!--            android:layout_width="120sp"-->
+<!--            android:layout_height="120sp"-->
+<!--            />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_photo2"-->
+<!--            android:layout_width="120sp"-->
+<!--            android:layout_height="120sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="10dp"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_photo3"-->
+<!--            android:layout_width="120sp"-->
+<!--            android:layout_height="120sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_photo4"-->
+<!--            android:layout_width="120sp"-->
+<!--            android:layout_height="120sp"-->
+<!--            />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_photo5"-->
+<!--            android:layout_width="120sp"-->
+<!--            android:layout_height="120sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="10dp"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_photo6"-->
+<!--            android:layout_width="120sp"-->
+<!--            android:layout_height="120sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_photo7"-->
+<!--            android:layout_width="120sp"-->
+<!--            android:layout_height="120sp"-->
+<!--            />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_photo8"-->
+<!--            android:layout_width="120sp"-->
+<!--            android:layout_height="120sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
+    
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -157,14 +141,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/Takephoto"
-                    android:layout_width="50sp"
-                    android:layout_height="50sp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/taking_pic"
-                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/Takephoto"
+                        android:layout_width="50sp"
+                        android:layout_height="50sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/taking_pic"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tvPhotonum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/8"/>
+                    </LinearLayout>
+                </LinearLayout>
+
                 <ImageView
                     android:id="@+id/img_photo1"
                     android:layout_width="100sp"
@@ -240,6 +245,7 @@
         android:background="@drawable/corners_round"
         android:orientation="vertical"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         android:padding="15dp">
         <LinearLayout
             android:layout_width="wrap_content"

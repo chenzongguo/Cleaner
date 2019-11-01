@@ -10,6 +10,7 @@ public interface IOrderDetailAtView {
     TextView getTvCorpName();
     TextView getTvRoomName();
     TextView getTvRoomType();
+    TextView getTvRoomState();
     TextView getTvBedNum();
     TextView getTvOrderId();
     TextView getTvRemark();
@@ -18,6 +19,7 @@ public interface IOrderDetailAtView {
     TextView getTvContacts();
     TextView getTvContactPhone();
     Button getBtnParnterReceipt();
+    Button getBtnEvaluation();
     RelativeLayout getRlyNoCompelte();
     RelativeLayout getRlyCompelte();
 }

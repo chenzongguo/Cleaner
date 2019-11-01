@@ -11,14 +11,13 @@ import cn.njthl.cleaner.ui.presenter.HomePageFgPresenter;
 import cn.njthl.cleaner.ui.view.HomePageFgView;
 
 import butterknife.BindView;
+import cn.njthl.cleaner.widget.MyListView;
 
 public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPresenter> implements HomePageFgView{
 
     @BindView(R2.id.lv_order_receive)
-    ListView lv_OrderReceive;
+    MyListView lv_OrderReceive;
 
-    @BindView(R2.id.img_NoOrder)
-    ImageView img_NoOrder;
 
     @Override
     public void onStart() {
@@ -47,12 +46,8 @@ public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPre
     }
 
     @Override
-    public ListView getLvOrderReceive() {
+    public MyListView getLvOrderReceive() {
         return lv_OrderReceive;
     }
 
-    @Override
-    public ImageView getImaNoOrder() {
-        return img_NoOrder;
-    }
 }

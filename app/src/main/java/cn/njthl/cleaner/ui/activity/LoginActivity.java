@@ -10,18 +10,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-
 import com.jaeger.library.StatusBarUtil;
 
+import androidx.annotation.Nullable;
+import butterknife.BindView;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.R2;
 import cn.njthl.cleaner.ui.base.BaseActivity;
 import cn.njthl.cleaner.ui.presenter.LoginAtPresenter;
 import cn.njthl.cleaner.ui.view.ILoginAtView;
 import cn.njthl.cleaner.util.UIUtils;
-
-import androidx.annotation.Nullable;
-import butterknife.BindView;
 
 /**
  * @创建者
@@ -51,6 +49,12 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
     @BindView(R2.id.tvOtherLogin)
     TextView mTvOtherLogin;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
+    }
+
     TextWatcher watcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -59,18 +63,17 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             mBtnLogin.setEnabled(canLogin());
+            if(!canLogin()){
+                mBtnLogin.setBackgroundColor(UIUtils.getColor(R.color.line));
+            }else{
+                mBtnLogin.setBackgroundColor(UIUtils.getColor(R.color.assist_green1));
+            }
         }
 
         @Override
         public void afterTextChanged(Editable s) {
         }
     };
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimary), 10);
-    }
 
     @Override
     public void requestPermissionResult(boolean allowPermission) {
@@ -82,6 +85,11 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
         mIbAddMenu.setVisibility(View.GONE);
     }
 
+
+    @Override
+    protected boolean isToolbarCanBack() {
+        return false;
+    }
     @Override
     public void initListener() {
         mEtPwd.addTextChangedListener(watcher);

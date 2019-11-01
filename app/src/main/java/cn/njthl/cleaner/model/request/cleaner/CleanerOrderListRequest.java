@@ -4,6 +4,7 @@ public class CleanerOrderListRequest {
     private String user_id ="";//商户id
     private String order_room_state;//订单房间状态
     private String is_working ;//订单房间状态
+    private String is_complete ;//订单房间状态
     private String start_number ="";//开始位置
     private String select_number ="";//查询条数
 
@@ -45,5 +46,13 @@ public class CleanerOrderListRequest {
 
     public void setIs_working(String is_working) {
         this.is_working = is_working;
+    }
+
+    public String getIs_complete() {
+        return is_complete;
+    }
+
+    public void setIs_complete(String is_complete) {
+        this.is_complete = is_complete;
     }
 }

@@ -24,7 +24,8 @@ public class FragmentFactory {
 
     private HomePageFragment mHomePageFragment;
     private OrderAllocationFragment mOrderAllocationFragment;
-    private OrderManageFragment mOrderManageFragment;
+//    private OrderManageFragment mOrderManageFragment;
+    private NewOrderManageFragment newOrderManageFragment;
     private MeFragment mMeFragment;
 
     public HomePageFragment getHomePageFragment() {
@@ -49,15 +50,26 @@ public class FragmentFactory {
         return mOrderAllocationFragment;
     }
 
-    public OrderManageFragment getOrderManageFragment() {
-        if (mOrderManageFragment == null) {
+//    public OrderManageFragment getOrderManageFragment() {
+//        if (mOrderManageFragment == null) {
+//            synchronized (FragmentFactory.class) {
+//                if (mOrderManageFragment == null) {
+//                    mOrderManageFragment = new OrderManageFragment();
+//                }
+//            }
+//        }
+//        return mOrderManageFragment;
+//    }
+
+    public NewOrderManageFragment getOrderManageFragment() {
+        if (newOrderManageFragment == null) {
             synchronized (FragmentFactory.class) {
-                if (mOrderManageFragment == null) {
-                    mOrderManageFragment = new OrderManageFragment();
+                if (newOrderManageFragment == null) {
+                    newOrderManageFragment = new NewOrderManageFragment();
                 }
             }
         }
-        return mOrderManageFragment;
+        return newOrderManageFragment;
     }
 
     public MeFragment getMeFragment() {

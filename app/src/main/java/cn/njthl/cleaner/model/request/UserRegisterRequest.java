@@ -12,7 +12,7 @@ public class UserRegisterRequest {
         this.user_phone = user_phone;
         this.user_pwd = user_pwd;
         this.type = "1";
-        this.role_id = "2";
+        this.role_id = "4";
     }
 
     public String getType() {

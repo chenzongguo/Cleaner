@@ -5,7 +5,7 @@ public class BaseResponse {
 
     private String errMessage;
 
-    private String  data;
+    private Data  data;
 
     public String getCode() {
         return code;
@@ -23,13 +23,16 @@ public class BaseResponse {
         this.errMessage = errMessage;
     }
 
-    public String getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Data data) {
         this.data = data;
     }
 
+    public static class Data{
+
+    }
 
 }

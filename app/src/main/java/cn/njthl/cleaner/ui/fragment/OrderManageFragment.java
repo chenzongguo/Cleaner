@@ -16,6 +16,15 @@ public class OrderManageFragment extends BaseFragment<OrderManageFgView, OrderMa
     @BindView(R2.id.llyOrderNoConfirm)
     LinearLayout llyOrderNoConfirm;
 
+    @BindView(R2.id.llyOrderNoConfirm3)
+    LinearLayout llyOrderNoConfirm3;
+
+    @BindView(R2.id.llyOrderNoConfirm4)
+    LinearLayout llyOrderNoConfirm4;
+
+    @BindView(R2.id.llyOrderNoConfirm5)
+    LinearLayout llyOrderNoConfirm5;
+
 //    @BindView(R2.id.llyOrderNoConfirm)
 //    LinearLayout llyOrderNoConfirm;
 //
@@ -49,6 +58,9 @@ public class OrderManageFragment extends BaseFragment<OrderManageFgView, OrderMa
     public void initListener() {
 
         llyOrderNoConfirm.setOnClickListener(v -> mPresenter.toActivity("2"));
+        llyOrderNoConfirm3.setOnClickListener(v -> mPresenter.toActivity("3"));
+        llyOrderNoConfirm4.setOnClickListener(v -> mPresenter.toActivity("4"));
+        llyOrderNoConfirm5.setOnClickListener(v -> mPresenter.toActivity("5"));
         llyComplete.setOnClickListener(v -> mPresenter.toActivity("7"));
     }
 }

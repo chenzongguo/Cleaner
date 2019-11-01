@@ -14,31 +14,31 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/colorPrimary">
+            android:layout_height="72dp"
+            android:background="@color/assist_green1">
 
             <ImageView
                 android:id="@+id/ivToolbarNavigation"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:src="@mipmap/ic_back"/>
 
             <View
                 android:id="@+id/vToolbarDivision"
-                android:layout_width="20dp"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/ivToolbarNavigation"
                 android:background="@drawable/shape_vertical_line"
-                android:visibility="visible"/>
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/llToolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/vToolbarDivision"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/app_name"
                     android:textColor="@color/white"
-                    android:textSize="17dp"
+                    android:textSize="25dp"
                     android:visibility="visible"/>
 
                 <TextView
@@ -63,8 +63,8 @@
             <!--加号菜单-->
             <ImageButton
                 android:id="@+id/ibAddMenu"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/item_margin_left_and_right"
@@ -82,7 +82,7 @@
                 android:visibility="gone">
 
                 <View
-                    android:layout_width="20dp"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/ivToolbarNavigation"
                     android:background="@drawable/shape_vertical_line"

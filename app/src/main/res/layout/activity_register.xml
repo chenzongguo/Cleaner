@@ -63,6 +63,7 @@
 
 
         <LinearLayout
+            android:id="@+id/llyPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -72,18 +73,17 @@
             android:paddingRight="30px">
 
 
-
-
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
-                android:layout_height="90px"
+                android:layout_height="70dp"
                 android:background="@color/white"
                 android:hint="  请输入你的手机号"
                 android:inputType="phone"
+                android:maxLength="11"
                 android:text=""
                 android:textColorHint="@color/gray3"
-                android:textSize="28px" />
+                android:textSize="@dimen/text_20" />
 
             <Button
                 android:id="@+id/btnGetVerifyCode"
@@ -98,29 +98,44 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llyVerifyCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="vertical"
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:paddingLeft="30px"
             android:paddingRight="30px">
 
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:background="@null"
-                android:text="验证码已发送至15094307279"
+                android:text="验证码已发送至"
                 android:textSize="28px"/>
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@null"
+                android:textSize="28px"/>
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/etVerifyCode"
                 android:layout_width="match_parent"
-                android:layout_height="90px"
+                android:layout_height="70dp"
                 android:background="@color/white"
                 android:hint="  请输入验证码"
+                android:maxLength="6"
                 android:inputType="phone"
                 android:text=""
                 android:textColorHint="@color/gray3"
@@ -135,15 +150,17 @@
                 android:background="@drawable/selector_login_btn"
                 android:enabled="true"
                 android:text="提交验证码"
-                android:textSize="30px"/>
+                android:textSize="@dimen/text_20"/>
         </LinearLayout>
 
 
         <LinearLayout
+            android:id="@+id/llypwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="vertical"
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:paddingLeft="30px"
             android:paddingRight="30px">
@@ -157,10 +174,11 @@
                 android:layout_height="90px"
                 android:background="@color/white"
                 android:hint="  输入密码"
-                android:inputType="phone"
+                android:inputType="textPassword"
+                android:maxLength="20"
                 android:text=""
                 android:textColorHint="@color/gray3"
-                android:textSize="28px" />
+                android:textSize="@dimen/text_20" />
 
             <EditText
                 android:id="@+id/etPwd2"
@@ -169,17 +187,18 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:hint="  确认密码"
-                android:inputType="phone"
+                android:inputType="textPassword"
+                android:maxLength="20"
                 android:text=""
                 android:textColorHint="@color/gray3"
-                android:textSize="28px" />
+                android:textSize="@dimen/text_20" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:background="@null"
-                android:text="密码长度8-32位，须包含数字、字母、符号至少2种或以上元素。"
+                android:text="密码长度6-20位。"
                 android:textSize="28px"/>
 
             <Button

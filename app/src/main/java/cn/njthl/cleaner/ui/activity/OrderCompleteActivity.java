@@ -26,7 +26,8 @@ public class OrderCompleteActivity extends BaseActivity<IOrderCompleteAtView, Or
     @BindView(R2.id.tvCorpName)
     TextView tvCorpName;
 
-
+    @BindView(R2.id.tvPhotonum)
+    TextView tvPhotonum;
     @BindView(R2.id.Takephoto)
     ImageView Takephoto;
 
@@ -55,7 +56,7 @@ public class OrderCompleteActivity extends BaseActivity<IOrderCompleteAtView, Or
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimary), 10);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
     }
 
     @Override
@@ -124,6 +125,7 @@ public class OrderCompleteActivity extends BaseActivity<IOrderCompleteAtView, Or
 
             }
             i = i +1;
+            tvPhotonum.setText(""+(i-1));
         }
     }
     @Override

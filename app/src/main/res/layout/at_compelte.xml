@@ -128,7 +128,8 @@
         android:hint="这里是保洁员备注。这里是保洁员备注。这里是保洁员备注。这里是保洁员备注。这里是保洁员备注。这里是保洁员备注。这里是保洁员备注。这里是保洁员备注。
 这里是保洁员备注。这里是保洁员备注。"
         android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:visibility="gone"/>
 
 
 </LinearLayout>
