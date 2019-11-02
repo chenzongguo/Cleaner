@@ -1,6 +1,8 @@
 package cn.njthl.cleaner.model.request;
 
 import cn.njthl.cleaner.app.AppConst;
+import cn.njthl.cleaner.app.MyApp;
+import cn.njthl.cleaner.util.SPUtils;
 
 public class UserTokenRequest {
     private String token;
@@ -9,7 +11,7 @@ public class UserTokenRequest {
 
     public UserTokenRequest(String token,String params){
         this.token = token;
-        this.user_token = AppConst.USER_TOKEN;
+        this.user_token = SPUtils.getInstance(MyApp.getContext()).getString("USER_TOKEN","");
         this.params = params;
     }
     public String getToken() {

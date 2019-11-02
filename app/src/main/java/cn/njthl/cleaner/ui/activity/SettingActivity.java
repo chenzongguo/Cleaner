@@ -6,9 +6,11 @@ import butterknife.BindView;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.R2;
 import cn.njthl.cleaner.app.AppConst;
+import cn.njthl.cleaner.app.MyApp;
 import cn.njthl.cleaner.ui.base.BaseActivity;
 import cn.njthl.cleaner.ui.base.BasePresenter;
 import cn.njthl.cleaner.util.ActivityCollectorUtils;
+import cn.njthl.cleaner.util.SPUtils;
 
 public class SettingActivity extends BaseActivity {
 
@@ -22,7 +24,7 @@ public class SettingActivity extends BaseActivity {
     }
 
     private void logout(){
-        AppConst.USER_TOKEN = "";
+        SPUtils.getInstance(MyApp.getContext()).putString("USER_TOKEN","");
         ActivityCollectorUtils.finishAllActivity();
         jumpToActivityAndClearTop(LoginActivity.class);
     }

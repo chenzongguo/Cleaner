@@ -14,6 +14,7 @@ import java.util.List;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.api.ApiRetrofit;
 import cn.njthl.cleaner.app.AppConst;
+import cn.njthl.cleaner.app.MyApp;
 import cn.njthl.cleaner.model.Bean.CleanerOrderBean;
 import cn.njthl.cleaner.model.Bean.OrderBean;
 import cn.njthl.cleaner.model.request.GetOrderListRequest;
@@ -25,6 +26,7 @@ import cn.njthl.cleaner.ui.base.BasePresenter;
 import cn.njthl.cleaner.ui.view.NewOrderManageFgView;
 import cn.njthl.cleaner.util.ButtonUtils;
 import cn.njthl.cleaner.util.LogUtils;
+import cn.njthl.cleaner.util.SPUtils;
 import cn.njthl.cleaner.util.UIUtils;
 import cn.njthl.cleaner.widget.MyListView;
 import rx.android.schedulers.AndroidSchedulers;
@@ -74,7 +76,7 @@ public class NewOrderManageFgPresenter extends BasePresenter<NewOrderManageFgVie
             getView().getLvOrder().addFooterView(LlyListNull);
         }
         CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-        cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
+        cleanerOrderListRequest.setUser_id(SPUtils.getInstance(MyApp.getContext()).getString("USER_ID",""));
         cleanerOrderListRequest.setSelect_number("10");
         cleanerOrderListRequest.setStart_number("0");
         if(order_room_state.equals("5"))
@@ -134,7 +136,7 @@ public class NewOrderManageFgPresenter extends BasePresenter<NewOrderManageFgVie
 //                }.execute(null, null, null);
 
                 CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-                cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
+                cleanerOrderListRequest.setUser_id(SPUtils.getInstance(MyApp.getContext()).getString("USER_ID",""));
                 cleanerOrderListRequest.setSelect_number("10");
                 cleanerOrderListRequest.setStart_number("0");
                 if(order_room_state.equals("5"))

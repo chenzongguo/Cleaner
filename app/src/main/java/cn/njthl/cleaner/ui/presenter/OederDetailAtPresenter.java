@@ -169,6 +169,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
                             room_state = 3;
                             getView().getBtnParnterReceipt().setText("确认到店");
 //                            getView().getBtnParnterReceipt().setEnabled(false);
+                            getView().getTvRoomState().setText("待上门");
                             Toast.makeText(mContext, "订单确认成功", Toast.LENGTH_SHORT).show();
                         } else {
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();

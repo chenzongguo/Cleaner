@@ -894,19 +894,21 @@
                         android:id="@+id/btnEvaluation"
                         android:layout_width="130dp"
                         android:layout_height="60dp"
-                        android:layout_alignParentRight="true"
+                        android:layout_toLeftOf ="@id/btnEvaluation"
                         android:background="@drawable/corners_round"
+                        android:layout_marginRight="10dp"
                         android:enabled="true"
                         android:text="评价详情"
                         android:textSize="@dimen/text_20"
-                        android:visibility="gone"
+                        android:visibility="invisible"
                         />
                     <Button
                         android:id="@+id/btnCompelte"
-                        android:layout_toLeftOf ="@id/btnEvaluation"
+
+                        android:layout_alignParentRight="true"
                         android:layout_width="130dp"
                         android:layout_height="60dp"
-                        android:layout_marginRight="10dp"
+
                         android:background="@drawable/corners_round"
                         android:enabled="true"
                         android:text="完成详情"

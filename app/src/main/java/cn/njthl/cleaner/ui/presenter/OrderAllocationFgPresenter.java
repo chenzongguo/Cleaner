@@ -12,6 +12,7 @@ import android.widget.Toast;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.api.ApiRetrofit;
 import cn.njthl.cleaner.app.AppConst;
+import cn.njthl.cleaner.app.MyApp;
 import cn.njthl.cleaner.model.Bean.CleanerOrderBean;
 import cn.njthl.cleaner.model.request.cleaner.CleanerOrderListRequest;
 import cn.njthl.cleaner.ui.activity.OrderDetailActivity;
@@ -23,6 +24,7 @@ import cn.njthl.cleaner.ui.view.OrderAllocationFgView;
 
 import java.util.List;
 
+import cn.njthl.cleaner.util.SPUtils;
 import cn.njthl.cleaner.widget.MyListView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -49,7 +51,7 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
             getView().getLvOrderAllocation().addFooterView(LlyListNull);
         }
         CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-        cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
+        cleanerOrderListRequest.setUser_id(SPUtils.getInstance(MyApp.getContext()).getString("USER_ID",""));
         cleanerOrderListRequest.setSelect_number("10");
         cleanerOrderListRequest.setStart_number("0");
 //        cleanerOrderListRequest.setOrder_room_state("2");
@@ -107,7 +109,7 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
 //                }.execute(null, null, null);
 
                 CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-                cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
+                cleanerOrderListRequest.setUser_id(SPUtils.getInstance(MyApp.getContext()).getString("USER_ID",""));
                 cleanerOrderListRequest.setSelect_number("10");
                 cleanerOrderListRequest.setStart_number("0");
 //                cleanerOrderListRequest.setOrder_room_state("2");

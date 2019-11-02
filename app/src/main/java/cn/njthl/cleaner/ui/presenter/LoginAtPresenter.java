@@ -6,6 +6,7 @@ import android.widget.Toast;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.api.ApiRetrofit;
 import cn.njthl.cleaner.app.AppConst;
+import cn.njthl.cleaner.app.MyApp;
 import cn.njthl.cleaner.model.request.UserLoginRequest;
 import cn.njthl.cleaner.ui.activity.MainActivity;
 import cn.njthl.cleaner.ui.activity.RegisterActivity;
@@ -16,6 +17,7 @@ import cn.njthl.cleaner.ui.view.ILoginAtView;
 import cn.njthl.cleaner.util.ButtonUtils;
 import cn.njthl.cleaner.util.LogUtils;
 import cn.njthl.cleaner.util.NetUtils;
+import cn.njthl.cleaner.util.SPUtils;
 import cn.njthl.cleaner.util.UIUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -64,8 +66,9 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
                         String code = userLoginResponse.getCode();
                         if("000".equals(code)){
                             mContext.hideWaitingDialog();
-                            AppConst.USER_TOKEN = userLoginResponse.getData().getUser_token();
-                            AppConst.USER_ID = userLoginResponse.getData().getUser_id();
+                            SPUtils.getInstance(MyApp.getContext()).putString("USER_TOKEN",userLoginResponse.getData().getUser_token());
+//                            AppConst.USER_ID = userLoginResponse.getData().getUser_id();
+                            SPUtils.getInstance(MyApp.getContext()).putString("USER_ID",userLoginResponse.getData().getUser_id());
                             AppConst.ROLE_ID = userLoginResponse.getData().getRole_id();
                             AppConst.Is_complete = userLoginResponse.getData().getIs_complete();
                             if(userLoginResponse.getData().getIs_complete().equals("0"))

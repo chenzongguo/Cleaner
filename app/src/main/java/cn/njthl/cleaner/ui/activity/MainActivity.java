@@ -104,6 +104,13 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
     }
 
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        jumpToActivity(SplashActivity.class);
+        finish();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         commonFragmentPagerAdapter.notifyDataSetChanged();

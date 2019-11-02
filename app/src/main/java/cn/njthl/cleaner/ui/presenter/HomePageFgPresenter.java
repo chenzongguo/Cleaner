@@ -13,6 +13,7 @@ import android.widget.Toast;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.api.ApiRetrofit;
 import cn.njthl.cleaner.app.AppConst;
+import cn.njthl.cleaner.app.MyApp;
 import cn.njthl.cleaner.model.Bean.CleanerOrderBean;
 import cn.njthl.cleaner.model.request.cleaner.CleanerOrderListRequest;
 import cn.njthl.cleaner.ui.activity.OrderDetailActivity;
@@ -24,6 +25,7 @@ import cn.njthl.cleaner.ui.view.HomePageFgView;
 import java.util.List;
 
 import cn.njthl.cleaner.util.LogUtils;
+import cn.njthl.cleaner.util.SPUtils;
 import cn.njthl.cleaner.util.UIUtils;
 import cn.njthl.cleaner.widget.MyListView;
 import rx.android.schedulers.AndroidSchedulers;
@@ -54,7 +56,7 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
         }
 
         CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-        cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
+        cleanerOrderListRequest.setUser_id(SPUtils.getInstance(MyApp.getContext()).getString("USER_ID",""));
         cleanerOrderListRequest.setSelect_number("10");
         cleanerOrderListRequest.setStart_number("0");
         cleanerOrderListRequest.setOrder_room_state("2");
@@ -110,7 +112,7 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
 //                }.execute(null, null, null);
 
                 CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-                cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
+                cleanerOrderListRequest.setUser_id(SPUtils.getInstance(MyApp.getContext()).getString("USER_ID",""));
                 cleanerOrderListRequest.setSelect_number("10");
                 cleanerOrderListRequest.setStart_number("0");
                 cleanerOrderListRequest.setOrder_room_state("2");
@@ -146,17 +148,9 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
 
             }
         });
-        getView().getLvOrderReceive().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext,"长按点击事件",Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
         getView().getLvOrderReceive().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext,"listview点击事件",Toast.LENGTH_SHORT).show();
 
                 if(cleanerOrderBeanList.size() == 0)
                     return;

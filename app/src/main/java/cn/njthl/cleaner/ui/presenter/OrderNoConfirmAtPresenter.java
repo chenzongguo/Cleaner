@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import cn.njthl.cleaner.api.ApiRetrofit;
 import cn.njthl.cleaner.app.AppConst;
+import cn.njthl.cleaner.app.MyApp;
 import cn.njthl.cleaner.model.Bean.CleanerOrderBean;
 import cn.njthl.cleaner.model.request.cleaner.CleanerOrderListRequest;
 import cn.njthl.cleaner.ui.activity.OrderDetailActivity;
@@ -17,6 +18,7 @@ import cn.njthl.cleaner.ui.view.IOrderNoConfirmAtView;
 
 import java.util.List;
 
+import cn.njthl.cleaner.util.SPUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -36,7 +38,7 @@ public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtVi
     private void  loadData(){
         String order_room_state = mContext.getIntent().getStringExtra("order_room_state");
         CleanerOrderListRequest cleanerOrderListRequest = new CleanerOrderListRequest();
-        cleanerOrderListRequest.setUser_id(AppConst.USER_ID);
+        cleanerOrderListRequest.setUser_id(SPUtils.getInstance(MyApp.getContext()).getString("USER_ID",""));
         cleanerOrderListRequest.setSelect_number("10");
         cleanerOrderListRequest.setStart_number("0");
         cleanerOrderListRequest.setOrder_room_state(order_room_state);
