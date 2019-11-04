@@ -12,6 +12,7 @@ import cn.njthl.cleaner.model.request.CheckUserPhoneRequest;
 import cn.njthl.cleaner.model.request.GetCleanPicRequest;
 import cn.njthl.cleaner.model.request.GetOrderListRequest;
 import cn.njthl.cleaner.model.request.GetOrderRequest;
+import cn.njthl.cleaner.model.request.GetOrderRoomRatingRequest;
 import cn.njthl.cleaner.model.request.GetTokenRequest;
 import cn.njthl.cleaner.model.request.GetUserListRequest;
 import cn.njthl.cleaner.model.request.ParnterReceiptRequest;
@@ -29,6 +30,7 @@ import cn.njthl.cleaner.model.response.CheckUpdateResponse;
 import cn.njthl.cleaner.model.response.GetCleanPicResponse;
 import cn.njthl.cleaner.model.response.GetOrderListResponse;
 import cn.njthl.cleaner.model.response.GetOrderResponse;
+import cn.njthl.cleaner.model.response.GetOrderRoomRatingResponse;
 import cn.njthl.cleaner.model.response.GetUserListResponse;
 import cn.njthl.cleaner.model.response.UserLoginResponse;
 import cn.njthl.cleaner.model.response.cleaner.CleanerOrderListResponse;
@@ -196,5 +198,9 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //商户接单
     public Observable<GetCleanPicResponse> getCleanPic(GetCleanPicRequest getCleanPicRequest) {
         return mApi.getCleanPic(getUserTokenRequestBody(getCleanPicRequest));
+    }
+    //商户接单
+    public Observable<GetOrderRoomRatingResponse> getOrderRoomRating(GetOrderRoomRatingRequest getOrderRoomRatingRequest) {
+        return mApi.getOrderRoomRating(getUserTokenRequestBody(getOrderRoomRatingRequest));
     }
 }

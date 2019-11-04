@@ -3,14 +3,15 @@ package cn.njthl.cleaner.ui.activity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 
+import butterknife.BindView;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.R2;
 import cn.njthl.cleaner.ui.base.BaseActivity;
 import cn.njthl.cleaner.ui.presenter.CompelteAtPresenter;
 import cn.njthl.cleaner.ui.view.ICompelteAtView;
-
-import butterknife.BindView;
+import cn.njthl.cleaner.util.UIUtils;
 
 public class CompelteActivity extends BaseActivity<ICompelteAtView, CompelteAtPresenter> implements ICompelteAtView {
 
@@ -44,9 +45,28 @@ public class CompelteActivity extends BaseActivity<ICompelteAtView, CompelteAtPr
 
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    public void initData() {
+        super.initData();
         mPresenter.getConversations();
+    }
+    @Override
+    public void initView() {
+        super.initView();
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
+        setToolbarTitle("打扫详情");
+    }
+
+    @Override
+    public void initListener() {
+        super.initListener();
+        img_photo1.setOnClickListener(v -> mPresenter.showImage(0));
+        img_photo2.setOnClickListener(v -> mPresenter.showImage(1));
+        img_photo3.setOnClickListener(v -> mPresenter.showImage(2));
+        img_photo4.setOnClickListener(v -> mPresenter.showImage(3));
+        img_photo5.setOnClickListener(v -> mPresenter.showImage(4));
+        img_photo6.setOnClickListener(v -> mPresenter.showImage(5));
+        img_photo7.setOnClickListener(v -> mPresenter.showImage(6));
+        img_photo8.setOnClickListener(v -> mPresenter.showImage(7));
     }
 
     @Override

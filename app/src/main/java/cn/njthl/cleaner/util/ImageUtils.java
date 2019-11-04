@@ -13,6 +13,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.os.SystemClock;
 import android.util.Base64;
 import android.view.Display;
@@ -37,7 +38,7 @@ public class ImageUtils {
 
     private static final String thumbImgDirPath = UIUtils.getContext().getCacheDir().getAbsolutePath();
     private static File thumbImgDir;
-
+    public static final String HOME_PATH = Environment.getExternalStorageDirectory()+"/hotel_clean/";
     /**
      * 根据一个网络连接(String)获取bitmap图像
      *
@@ -495,6 +496,7 @@ public class ImageUtils {
         return inSampleSize;
     }
 
+
     public static String bufferImage(Drawable drawable) {
         if (drawable == null) {
             return null;
@@ -518,16 +520,16 @@ public class ImageUtils {
         os = new ByteArrayOutputStream();
 //		bitmap.compress(CompressFormat.JPEG, 100, os);
 
-        int options = 80;
+        int options = 100;
         bitmap.compress(Bitmap.CompressFormat.JPEG, options, os);
-        while (os.toByteArray().length / 1024 > 200) {
-            os.reset();
-            if(options>10)
-                options -= 10;
-            else
-                options -= 2;
-            bitmap.compress(Bitmap.CompressFormat.JPEG, options, os);
-        }
+//        while (os.toByteArray().length / 1024 > 200) {
+//            os.reset();
+//            if(options>10)
+//                options -= 10;
+//            else
+//                options -= 2;
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, options, os);
+//        }
         array = os.toByteArray();
         try {
             os.close();
@@ -539,6 +541,7 @@ public class ImageUtils {
         return array;
     }
 
+
     /**
      * base64转为bitmap
      * @param base64Data
@@ -548,4 +551,34 @@ public class ImageUtils {
         byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
+
+    public static void saveBmp(Bitmap captureBmp, String fileName) {
+        if (captureBmp == null || captureBmp.isRecycled())
+            return;
+
+        File fx = new File(HOME_PATH);
+        if (!fx.exists())
+            fx.mkdir();
+        File f1 = new File(HOME_PATH+fileName);
+
+        FileOutputStream fOut = null;
+        try {
+            fOut = new FileOutputStream(f1);
+            captureBmp.compress(Bitmap.CompressFormat.JPEG,100,fOut);
+            fOut.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (f1.exists())
+                f1.delete();
+        }finally{
+            if (fOut != null) {
+                try {
+                    fOut.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }

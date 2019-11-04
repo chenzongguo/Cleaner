@@ -178,14 +178,17 @@ public class NewOrderManageFgPresenter extends BasePresenter<NewOrderManageFgVie
         getView().getLvOrder().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(cleanerOrderBeanList.size() == 0)
-                    return;
-                if (position>0)
-                    position = position - 1;
-                Intent intent = new Intent(mContext, OrderDetailActivity.class);
-                intent.putExtra("order_room_id",cleanerOrderBeanList.get(position).getOrder_room_id());
+                if (!ButtonUtils.isFastDoubleClick()) {
+                    if(cleanerOrderBeanList.size() == 0)
+                        return;
+                    if (position>0)
+                        position = position - 1;
+                    Intent intent = new Intent(mContext, OrderDetailActivity.class);
+                    intent.putExtra("order_room_id",cleanerOrderBeanList.get(position).getOrder_room_id());
 //                intent.putExtra("order_state",cleanerOrderBeanList.get(position).getOrder_room_state());
-                mContext.jumpToActivity(intent);
+                    mContext.jumpToActivity(intent);
+                }
+
             }
         });
         if (orderAllocationAdapter != null)
@@ -195,6 +198,10 @@ public class NewOrderManageFgPresenter extends BasePresenter<NewOrderManageFgVie
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
+        if (mContext == null || mContext.isDestroyed() || mContext.isFinishing()) {
+            return;
+        }
+        mContext.hideWaitingDialog();
     }
 
 }

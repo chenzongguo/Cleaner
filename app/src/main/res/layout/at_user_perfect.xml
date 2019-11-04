@@ -285,7 +285,7 @@
     <Button
         android:id="@+id/btnUserPerfect"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="15dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="15dp"
@@ -293,5 +293,5 @@
         android:enabled="true"
         android:text="完善信息"
         android:textColor="@color/white"
-        android:textSize="15dp"/>
+        android:textSize="@dimen/text_20"/>
 </RelativeLayout>

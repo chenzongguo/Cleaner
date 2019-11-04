@@ -5,6 +5,7 @@ import cn.njthl.cleaner.model.response.CheckUpdateResponse;
 import cn.njthl.cleaner.model.response.GetCleanPicResponse;
 import cn.njthl.cleaner.model.response.GetOrderListResponse;
 import cn.njthl.cleaner.model.response.GetOrderResponse;
+import cn.njthl.cleaner.model.response.GetOrderRoomRatingResponse;
 import cn.njthl.cleaner.model.response.GetUserListResponse;
 import cn.njthl.cleaner.model.response.UserLoginResponse;
 import cn.njthl.cleaner.model.response.cleaner.CleanerOrderListResponse;
@@ -109,4 +110,7 @@ public interface MyApi {
     //商户接单
     @POST("hsp/order/getCleanPic.do")
     Observable<GetCleanPicResponse> getCleanPic(@Body RequestBody jsonString);
+    //商户接单
+    @POST("hsp/order/getOrderRoomRating.do")
+    Observable<GetOrderRoomRatingResponse> getOrderRoomRating(@Body RequestBody jsonString);
 }

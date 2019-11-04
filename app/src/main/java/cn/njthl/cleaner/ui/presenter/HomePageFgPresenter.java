@@ -24,6 +24,7 @@ import cn.njthl.cleaner.ui.view.HomePageFgView;
 
 import java.util.List;
 
+import cn.njthl.cleaner.util.ButtonUtils;
 import cn.njthl.cleaner.util.LogUtils;
 import cn.njthl.cleaner.util.SPUtils;
 import cn.njthl.cleaner.util.UIUtils;
@@ -151,16 +152,17 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
         getView().getLvOrderReceive().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if(cleanerOrderBeanList.size() == 0)
-                    return;
-                if (position>0)
-                    position = position - 1;
-                Intent intent = new Intent(mContext, OrderDetailActivity.class);
-                intent.putExtra("order_room_id",cleanerOrderBeanList.get(position).getOrder_room_id());
+                if (!ButtonUtils.isFastDoubleClick()) {
+                    if(cleanerOrderBeanList.size() == 0)
+                        return;
+                    if (position>0)
+                        position = position - 1;
+                    Intent intent = new Intent(mContext, OrderDetailActivity.class);
+                    intent.putExtra("order_room_id",cleanerOrderBeanList.get(position).getOrder_room_id());
 //                intent.putExtra("order_state",cleanerOrderBeanList.get(position).getOrder_room_state());
-                mContext.jumpToActivity(intent);
+                    mContext.jumpToActivity(intent);
 //                mContext.jumpToActivityAndClearTop(OrderDetailActivity.class);
+                }
             }
         });
         if (orderReceiveAdapter != null)
@@ -193,5 +195,9 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
+        if (mContext == null || mContext.isDestroyed() || mContext.isFinishing()) {
+            return;
+        }
+        mContext.hideWaitingDialog();
     }
 }

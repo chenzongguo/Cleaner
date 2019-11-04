@@ -8,11 +8,13 @@ import butterknife.BindView;
 import cn.njthl.cleaner.R;
 import cn.njthl.cleaner.R2;
 import cn.njthl.cleaner.api.ApiRetrofit;
+import cn.njthl.cleaner.app.MyApp;
 import cn.njthl.cleaner.model.request.GetUserListRequest;
 import cn.njthl.cleaner.model.response.GetUserListResponse;
 import cn.njthl.cleaner.ui.base.BaseActivity;
 import cn.njthl.cleaner.ui.base.BasePresenter;
 import cn.njthl.cleaner.util.LogUtils;
+import cn.njthl.cleaner.util.SPUtils;
 import cn.njthl.cleaner.util.UIUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -50,7 +52,8 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     private void  loadData(){
-        user_id = getIntent().getStringExtra("user_id");
+//        user_id = getIntent().getStringExtra("user_id");
+        user_id = SPUtils.getInstance(MyApp.getContext()).getString("USER_ID","");
         GetUserListRequest getUserListRequest = new GetUserListRequest();
         getUserListRequest.setType("2");
         getUserListRequest.setUser_id(user_id);
@@ -110,5 +113,9 @@ public class UserInfoActivity extends BaseActivity {
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
+        if (this == null || this.isDestroyed() || this.isFinishing()) {
+            return;
+        }
+        hideWaitingDialog();
     }
 }

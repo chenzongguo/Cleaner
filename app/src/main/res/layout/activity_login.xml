@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:text="国家/地区"
                 android:textColor="@color/black0"
-                android:textSize="14dp"/>
+                android:textSize="@dimen/text_20"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
                 android:layout_marginRight="10dp"
                 android:text="江苏南京"
                 android:textColor="@color/green1"
-                android:textSize="14dp"/>
+                android:textSize="@dimen/text_20"/>
 
         </LinearLayout>
 
@@ -46,7 +46,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="75dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="15dp"
@@ -57,18 +57,19 @@
                 android:layout_height="wrap_content"
                 android:text="账号"
                 android:textColor="@color/black0"
-                android:textSize="14dp"/>
+                android:textSize="@dimen/text_20"/>
 
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:hint="手机号码"
                 android:inputType="phone"
                 android:maxLength="11"
                 android:textColorHint="@color/gray3"
-                android:textSize="14dp"/>
+                android:textSize="@dimen/text_20"/>
 
         </LinearLayout>
 
@@ -79,7 +80,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="75dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="15dp"
@@ -91,18 +92,19 @@
                 android:text="密码"
 
                 android:textColor="@color/black0"
-                android:textSize="14dp"/>
+                android:textSize="@dimen/text_20"/>
 
             <EditText
                 android:id="@+id/etPwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:hint="填写密码"
                 android:inputType="textPassword"
                 android:maxLength="20"
                 android:textColorHint="@color/gray3"
-                android:textSize="14dp"/>
+                android:textSize="@dimen/text_20"/>
 
         </LinearLayout>
 
@@ -114,14 +116,14 @@
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/selector_login_btn"
             android:enabled="true"
             android:text="登录"
             android:textColor="@color/white"
-            android:textSize="15dp"/>
+            android:textSize="@dimen/text_20"/>
             <!--android:textColor="@color/selector_login_btn"-->
 
 
@@ -132,7 +134,7 @@
             android:gravity="center"
             android:text="注册账号"
             android:textColor="@color/blue0"
-            android:textSize="14dp"/>
+            android:textSize="@dimen/text_20"/>
     </LinearLayout>
 
     <RelativeLayout
@@ -145,7 +147,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="invisible">
 
 
             <TextView

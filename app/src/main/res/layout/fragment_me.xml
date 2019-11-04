@@ -157,19 +157,85 @@
 <!--            </LinearLayout>-->
 
 
+<!--            <TextView-->
+<!--                android:id="@+id/tv_setting"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:background="@color/white"-->
+<!--                android:drawableRight="@drawable/right_arrow"-->
+<!--                android:paddingLeft="30dp"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:paddingRight="20dp"-->
+<!--                android:paddingBottom="5dp"-->
+<!--                android:text="设置"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="@dimen/text_20" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="30dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="检测版本"
+                    android:textColor="@color/black0"
+                    android:textSize="24sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="已是最新版本"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:textColorHint="@color/gray3"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/lightgrey" />
+
             <TextView
-                android:id="@+id/tv_setting"
+                android:id="@+id/tvUserInvitation"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@color/white"
-                android:drawableRight="@drawable/right_arrow"
-                android:paddingLeft="30dp"
-                android:paddingTop="15dp"
                 android:paddingRight="20dp"
+                android:paddingTop="15dp"
                 android:paddingBottom="5dp"
-                android:text="设置"
+                android:paddingLeft="30dp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_20" />
+                android:drawableRight="@drawable/right_arrow"
+                android:background="@color/white"
+                android:text="关于我们"
+                android:textSize="@dimen/text_20"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/lightgrey"
+                android:orientation="vertical" >
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_login_btn"
+                android:enabled="true"
+                android:text="退出登录"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_20"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1.5dp"

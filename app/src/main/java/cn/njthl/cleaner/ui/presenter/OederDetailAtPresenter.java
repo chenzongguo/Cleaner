@@ -18,6 +18,7 @@ import cn.njthl.cleaner.model.request.cleaner.CleanerDoorRequest;
 import cn.njthl.cleaner.model.request.cleaner.CleanerOrderRequest;
 import cn.njthl.cleaner.model.response.cleaner.CleanerOrderResponse;
 import cn.njthl.cleaner.ui.activity.CompelteActivity;
+import cn.njthl.cleaner.ui.activity.EvaluationInfoActivity;
 import cn.njthl.cleaner.ui.activity.OrderCompleteActivity;
 import cn.njthl.cleaner.ui.adapter.OrderRoomAdapter;
 import cn.njthl.cleaner.ui.base.BaseActivity;
@@ -26,6 +27,9 @@ import cn.njthl.cleaner.ui.view.IOrderDetailAtView;
 
 import java.util.List;
 
+import cn.njthl.cleaner.util.ButtonUtils;
+import cn.njthl.cleaner.util.LogUtils;
+import cn.njthl.cleaner.util.UIUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -53,6 +57,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
     }
 
     private void loadData() {
+        mContext.showWaitingDialog("正在加载数据");
         order_room_id = mContext.getIntent().getStringExtra("order_room_id");
 //        order_state = mContext.getIntent().getStringExtra("order_state");
 //        if(order_state.equals("3")){
@@ -66,6 +71,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(cleanerOrderResponse -> {
                     String code = cleanerOrderResponse.getCode();
+                    mContext.hideWaitingDialog();
                     if ("000".equals(code)) {
                         this.cleanerOrderResponse = cleanerOrderResponse;
 //                        orderRoomBeanList =  getOrderResponse.getData().getCorp_room_data();
@@ -76,7 +82,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
                     } else {
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                },this::loginError);
     }
 //    private void setAdapter(){
 //
@@ -175,7 +181,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    },this::loginError);
         } else if (room_state == 3) {
             CleanerDoorRequest cleanerDoorRequest = new CleanerDoorRequest();
             cleanerDoorRequest.setLat("31.97774");
@@ -202,7 +208,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    },this::loginError);
 
         } else if (room_state == 4) {
             Intent intent = new Intent(mContext, OrderCompleteActivity.class);
@@ -215,15 +221,33 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
     }
 
     public void compelte() {
-        if (cleanerOrderResponse.getData().getIs_clean().equals("1")) {
-            Intent intent = new Intent(mContext, CompelteActivity.class);
-            intent.putExtra("pic_id", cleanerOrderResponse.getData().getPic_id());
-            mContext.startActivity(intent);
-        } else {
-            Toast.makeText(mContext, "房间正在打扫中 ", Toast.LENGTH_SHORT).show();
+        if (!ButtonUtils.isFastDoubleClick()) {
+            if (cleanerOrderResponse.getData().getIs_clean().equals("1")) {
+                Intent intent = new Intent(mContext, CompelteActivity.class);
+                intent.putExtra("pic_id", cleanerOrderResponse.getData().getPic_id());
+                mContext.startActivity(intent);
+            } else {
+                Toast.makeText(mContext, "房间正在打扫中 ", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    public void Evaluation(){
+        if (!ButtonUtils.isFastDoubleClick()) {
+            if(cleanerOrderResponse.getData().getIs_rating().equals("1")){
+                Intent intent = new Intent(mContext, EvaluationInfoActivity.class);
+                intent.putExtra("user_rating_id",cleanerOrderResponse.getData().getUser_rating_id());
+                mContext.startActivity(intent);
+            }else{
+                Toast.makeText(mContext,"订单未完成无评价信息",Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
+    private void loginError(Throwable throwable) {
+        mContext.hideWaitingDialog();
+        LogUtils.e(throwable.getLocalizedMessage());
+        UIUtils.showToast(throwable.getLocalizedMessage());
+    }
     /**
      * 获取具体位置的经纬度
      */

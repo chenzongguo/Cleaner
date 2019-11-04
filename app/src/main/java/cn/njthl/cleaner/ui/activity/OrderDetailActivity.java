@@ -109,6 +109,7 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     public void initListener() {
         btnParnterReceipt.setOnClickListener(v -> mPresenter.ParnterReceipt());
         btnCompelte.setOnClickListener(v -> mPresenter.compelte());
+        btnEvaluation.setOnClickListener(v -> mPresenter.Evaluation());
 //        mBtnCheckCaptcha.setOnClickListener(v -> mPresenter.GetVerifyCode());
 //        mBtnUserRegister.setOnClickListener(v -> mPresenter.register());
     }

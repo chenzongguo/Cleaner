@@ -1,5 +1,6 @@
 package cn.njthl.cleaner.ui.fragment;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -18,14 +19,18 @@ public class MeFragment extends BaseFragment<MeFgView, MeFgPresenter> implements
 //    @BindView(R2.id.tvUserInvitation)
 //    TextView tvUserInvitation;
 
-    @BindView(R2.id.tv_setting)
-    TextView tv_setting;
+//    @BindView(R2.id.tv_setting)
+//    TextView tv_setting;
+
+    @BindView(R2.id.btnLogout)
+    Button mBtnLogout;
 
     @Override
     public void initListener() {
         super.initListener();
         tvUserInfo.setOnClickListener(v -> mPresenter.toUserManageActivity());
-        tv_setting.setOnClickListener(v -> mPresenter.toSettingActivity());
+//        tv_setting.setOnClickListener(v -> mPresenter.toSettingActivity());
+        mBtnLogout.setOnClickListener(v -> mPresenter.logout());
     }
 
     @Override

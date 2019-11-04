@@ -4,6 +4,8 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
+import com.previewlibrary.ZoomMediaLoader;
+
 import cn.njthl.cleaner.app.base.BaseApp;
 
 import org.litepal.LitePal;
@@ -39,6 +41,7 @@ public class MyApp extends BaseApp {
     public void onCreate() {
         super.onCreate();
         LitePal.initialize(this);
+        ZoomMediaLoader.getInstance().init(new TestImageLoader());
 //        SQLiteDatabase db = Connector.getDatabase();
         instance = this;
         DisplayMetrics mDisplayMetrics = getResources().getDisplayMetrics();

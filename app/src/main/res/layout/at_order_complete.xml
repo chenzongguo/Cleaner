@@ -172,57 +172,57 @@
 
                 <ImageView
                     android:id="@+id/img_photo1"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:visibility="gone"
                     />
                 <ImageView
                     android:id="@+id/img_photo2"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:visibility="gone"
                     />
                 <ImageView
                     android:id="@+id/img_photo3"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:visibility="gone"
                     />
                 <ImageView
                     android:id="@+id/img_photo4"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:visibility="gone"
                     />
                 <ImageView
                     android:id="@+id/img_photo5"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:visibility="gone"
                     />
                 <ImageView
                     android:id="@+id/img_photo6"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:visibility="gone"
                     />
                 <ImageView
                     android:id="@+id/img_photo7"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:visibility="gone"
                     />
                 <ImageView
                     android:id="@+id/img_photo8"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:visibility="gone"
                     />

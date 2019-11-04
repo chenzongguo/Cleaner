@@ -152,6 +152,9 @@ public class SplashActivity extends BaseActivity {
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
+        if (this == null || this.isDestroyed() || this.isFinishing()) {
+            return;
+        }
         hideWaitingDialog();
         mProgressDialog.cancel();
         jumpToActivity(LoginActivity.class);

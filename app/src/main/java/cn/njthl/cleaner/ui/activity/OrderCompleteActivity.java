@@ -86,6 +86,7 @@ public class OrderCompleteActivity extends BaseActivity<IOrderCompleteAtView, Or
             if (data!= null) {
                 Bitmap cameraBitmap = (Bitmap) data.getExtras().get("data");
                 System.out.println("fdf================="+data.getDataString());
+                mPresenter.setCameraBitmap(requestCode,cameraBitmap);
                 switch (requestCode){
                     case 1:
                         img_photo1.setImageBitmap(cameraBitmap);
